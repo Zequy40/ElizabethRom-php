@@ -1,0 +1,77 @@
+.sectionclothe_containerSection{
+    width: 100vw;
+    
+    position: relative;
+    margin: 3.125rem 0 4.375rem 0;
+    gap: 15px;
+}
+.sectionclothe_part{
+    width: 100%;
+    display: flex;
+    flex-wrap: no-wrap;
+    border-top: 1px solid #000;
+    
+}
+.sectionclothe_part:nth-child(3){
+    border-bottom: 1px solid #000;
+}
+.sectionclothe_img{
+    width: 95%;
+    object-fit: cover;
+
+}
+.sectionclothe_contain{
+    padding: 0.625rem;
+}
+.sectionclothe_image{
+    position: relative;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.sectionclothe_image:nth-child(1){
+    border-right: 1px solid #000;
+
+}
+.sectionclothe_h3{
+    color: rgb(255, 255, 255);
+    position: absolute;
+    bottom: 5%;
+    left: 0;
+    transform: translate(20%, 0%);
+    text-transform: uppercase;
+    font-size: 14px;
+    
+}
+
+.sectionclothe_title{
+    text-align: center;
+    font-size: 1.25rem;
+    font-weight: 900;
+    font-family: "Alice";
+    line-height: 1.5625rem;
+    letter-spacing: 0.4375rem;
+}
+
+@media screen and (min-width: 1024px){
+  
+.sectionclothe_containerSection{
+    width: 100%;
+}
+.sectionclothe_title{
+    font-size: 2.5rem;
+}
+.sectionclothe_containerSection{
+    margin-top: 9.375rem;
+}
+.sectionclothe_image, .sectionclothe_contain,.sectionclothe_img{
+    max-height: 31.25rem;
+}
+.sectionclothe_h3{
+    color: white;
+    background-color: #4e2e193e;
+    border-radius: 5px;
+    padding: .5rem;
+}
+}

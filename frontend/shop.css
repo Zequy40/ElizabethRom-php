@@ -1,0 +1,565 @@
+.shop_containPricipal{
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: 0.625rem;
+  position: relative;
+  padding-top: 6.25rem;
+}
+.shop_layoutContain{
+  position: relative;
+  height: 5rem;
+}
+.shop_imgContain{
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+.shop_h2Contain{
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  color: antiquewhite;
+  font-size: 20px;
+  text-shadow: 1px 1px 2px antiquewhite ;
+  text-transform: uppercase;
+  text-align: center;
+}
+.shop_span{
+	font-size: 10px;
+	color:white;
+	position: absolute;
+	top: -0.9375rem;
+	right: -4.375rem;
+  }
+
+
+.shop_backgroundContain{
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  background-color: #00000055;
+}
+.shop_section{
+  height: 100vh;
+  position: relative;
+}
+
+.shopClothe_header{
+	margin-top: 70px;
+	display: flex;
+	flex-flow: column nowrap;
+	align-items: center;
+}
+.shopClothe_h1{
+	width: 100%;
+	border-bottom: 1px solid #000;
+	border-top: 1px solid #000;
+	padding: 1rem;
+	text-align: center;
+        font-size: 1.25rem;
+        font-weight: 900;
+        font-family: "Alice";
+        line-height: 1.5625rem;
+        letter-spacing: 0.4375rem;
+}
+.shopClothe_result{
+	padding: .6rem;
+	font-size: 12px;
+	color:#333;
+}
+.shopClothe_img{
+	height: 272px;
+}
+.shopClothe_containSection{
+	width: 100%;
+display: grid;
+grid-template-columns: repeat(2,1fr);
+margin-bottom: 4.0625rem;
+}
+.shopClothe_squareActive{
+	grid-template-columns: repeat(1,1fr);
+	place-content: center;
+}
+.shopClothe_containSection.shopClothe_squareActive .shopClothe_container{
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+}
+.shopClothe_containSection.shopClothe_squareActive .shopClothe_container .shopClothe_img{
+	height: 100%;
+	object-fit: cover;
+	max-height: 500px;
+}
+.shopClothe_container{
+	padding: 10px;
+	border-bottom: 1px solid #000;
+}
+.shopClothe_container:nth-child(-n+2){
+	border-top: 1px solid #000;/* Elige las 2 fotos del principio */
+}
+.shopClothe_container:nth-child(2n+1){
+	border-right: 1px solid #000;
+}
+.shopClothe_container:last-child{
+	border-right: 1px solid #000;
+	border-bottom: 1px solid #000;
+	
+}
+.shopClothe_containP{
+	margin-top: 10px;
+}
+
+.shopClothe_p1{
+	white-space: nowrap;      /* Evita el desbordamiento de texto al siguiente renglón */
+  overflow: hidden;         /* Oculta cualquier desbordamiento de contenido */
+  text-overflow: ellipsis;  /* Agrega puntos suspensivos (...) al final del texto */
+  max-width: 150px; 
+}
+.shopClothe_p3{
+	font-size: 10px;
+}
+.shopClothe_shop{
+	position: relative;
+}
+.shopClothe_pShop{
+position: absolute;	
+width: 100px;
+max-width: 100%;
+bottom: 0;
+left: 50%;
+transform: translate(-50% );
+font-size: 12px;
+backdrop-filter: blur(4px);
+background: #ffffffa7;
+text-align: center;
+border-top-left-radius: 4px;
+border-top-right-radius: 4px;
+}
+.shopClothe_btnSquare{
+	display: flex;
+	justify-content: center;
+	align-items: center;
+}
+.shopClothe_containResult{
+	display: flex;
+	justify-content: space-around;
+	align-items: center;
+	width: 100%;
+}
+.shopClothe_square1, .shopClothe_square2{
+	position: relative;
+	display: inline-block;
+	width: 23px;
+	height: 23px;
+	margin-left: 3px;
+	border: 1px solid #000;
+}
+.shopClothe_square1:after{
+	content:"";
+	top: 0;
+	left: 48%;
+	width: 1px;
+	height: 100%;
+	background-color: #000;
+	position: absolute;
+	transform: translate(-50% -50%);
+}
+.shopClothe_square1:before{
+	content:"";
+	top: 45%;
+	left: 0;
+	width: 100%;
+	height: 1px;
+	background-color: #000;
+	position: absolute;
+	transform: translate(-50% -50%);
+}
+.shopClothe_backBtn{
+	background-color: #000;
+}
+.shopClothe_backBtn.shopClothe_square1:after,
+.shopClothe_backBtn.shopClothe_square1:before {
+	background-color: white;
+}
+
+.shopClothe_contain{
+  position: fixed;
+  top: 0;
+  padding: 15px;
+  width: 100%;
+  background-color: #efefef;
+  z-index: 1;
+  display: flex;
+  justify-content: space-between;
+}
+
+.shopClothe_title{
+font-family: 'Alice';
+font-size: 15px;
+font-weight: 600;
+padding: 0 ;
+position: relative;
+text-transform: uppercase;
+text-align: center;
+letter-spacing: 7px;
+line-height: 2;
+color:rgb(0, 0, 0);
+display: flex;
+justify-content: start;
+align-items: center;
+gap: 10px;
+}
+.shopClothe_title .shopClothe_p{
+  font-size: 10px;
+  color: #ffffff;
+  font-weight: lighter;
+}
+.shopClothe_svg{
+  width: 20px;
+}
+
+  .details_img{
+    width: 95%;
+    padding: 10px;
+    margin: auto;
+  }
+  .details_container{
+    margin-top: 3.75rem;  
+    padding-bottom: 1rem;
+  }
+  .details_contain{
+    display: flex;
+    flex-flow: column nowrap;
+    padding: 0 20px;
+    gap: 25px;
+  }
+  .details_flex{
+    display: flex;
+  }
+  .display_flex-svg{
+    width: 16px;
+  }
+  .details_btn{
+    border: 1px solid gray;
+    width: 2rem;
+    height: 2rem;
+    text-align: center;
+    line-height: 1.25rem;
+    font-size: 1.25rem;
+    color: gray;
+  }
+  .details_flex_input{
+    border: 1px solid gray;
+    width: 2rem;
+    height: 2rem;
+    text-align: center;
+    line-height: 1rem;
+    font-size: 1rem;
+    color: gray;
+  }
+  .details_h2{
+    font-family: "Alice";
+    font-weight: 700;
+    text-transform: uppercase;
+    font-size: 20px;
+  }
+  .details_negro {
+    width: 30px;
+    height: 30px;
+    border-radius: 50%;
+    background-color: Black;
+    appearance: none;
+    position: relative;
+  }
+  .details_input input:checked.details_negro,
+  .details_input input:checked.details_rojo,
+  .details_input input:checked.details_purpura {
+  width: 29px;
+  height: 29px;
+  
+  padding: 5px;/* Borde interior blanco */
+              
+}
+  .details_input input:checked.details_negro::before,
+  .details_input input:checked.details_rojo::before,
+  .details_input input:checked.details_purpura::before {
+  content: "";
+  position: absolute;
+  top: -5px;
+  left: -5px;
+  width: 35px;
+  height: 35px;
+  border-radius: 50%;
+  border: 2px solid rgb(107, 48, 2);
+}
+  .details_rojo{
+    width: 30px;
+    height: 30px;
+    border-radius: 50%;
+    background-color: rgb(255, 0, 0);
+    appearance: none;
+    position: relative;
+  }
+  .details_purpura{
+    width: 30px;
+    height: 30px;
+    border-radius: 50%;
+    background-color: rgb(151, 0, 56);
+    appearance: none;
+    position: relative;
+  }
+  .details_input{
+    display: flex;
+    gap: 10px;
+  }
+  .details_check{
+    appearance: none;
+    
+  }
+  .details_checkLabel{
+    display: inline-flex;
+    justify-content: center;
+    align-items: center;
+    border: 1px solid rgba(188, 188, 188, 0.593);
+    width: 70px;
+    height: 30px;
+    padding: 20px;
+  }
+  .details_containCheck{
+    display: flex;
+    width: 100%;
+    justify-content: space-evenly;
+  }
+  .details_containCheck input:checked + .details_checkLabel {
+  background-color: rgb(88, 37, 0); /* Color de fondo cuando está marcado */
+  color: #fff; /* Color del texto cuando está marcado */
+}
+.details_checkLabel input {
+  position: absolute;
+  opacity: 0;
+}
+
+  #agregar, #show{
+    width: 100%;
+    margin: 0;
+    padding: 15px;
+    border-radius: 10px;
+    font-size: 16px;
+    letter-spacing: 5px;
+    font-family: "Alice";
+    font-weight: bold;
+    color: antiquewhite;
+    text-transform: uppercase;
+    background-color: rgb(88, 37, 0);
+    display: flex;
+    gap: 8px;
+    justify-content: center;
+    align-items: center;
+  }
+  
+  #selectedColorLabel, .label{
+    font-size: 14px;
+  }
+  .details_svg{
+    width: 16px;
+    height: 16px;
+  }
+  .details_label{
+    display: flex;
+    gap: 10px;
+  }
+  .details_whislist{
+    display: flex;
+    justify-content: space-between;
+  }
+  .details_span{
+    width: 27px;
+    height: 27px;
+    border-radius: 50%;
+    border: 1px solid #9f9f9f;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  .details_flex-btn{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+
+  }
+.fade{
+  display: block;
+}
+.modal{
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background-color: #000000c2;
+  z-index: 4;
+  display: none;
+}
+.modal-dialog{
+  width: 500px;
+  height: 300px;
+  border-radius: 10px;
+  background-color: #efefef;
+  position: relative;
+  z-index: 4;
+  margin: auto;
+  
+}
+.modal-content{
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+.modal-header{
+ position:relative;
+}
+.modal-title{
+  margin-top: 0.625rem;
+  font-family: Alice;
+  font-size: 1.875rem;
+  color: red;
+  font-weight: 700;
+  padding: 1rem;
+}
+.modal-body{
+ padding: 2rem;
+ text-wrap: pretty;
+ font-size: 18px;
+ line-height: 22px;
+}
+
+.modal-body a{
+  padding: 1.2rem;
+  text-decoration: underline;
+  color: brown;
+}
+.modal-footer{
+ width: 100%;
+
+}
+.close{
+  position: absolute;
+  top: 10px;
+  right: -50px;
+}
+.close span{
+  color:red;
+  font-size: 30px;
+  cursor: pointer;
+}
+.btn-secondary{
+  padding: 1rem;
+  background-color: darkgoldenrod;
+  color: white;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: auto;
+  border-radius:10px ;
+}
+
+
+  details{
+    border: 1px solid #ccc;
+    padding: 16px;
+    border-radius: 8px;
+    transition: all .3s ease;
+
+  }
+
+  details[open]{
+    background-color: rgb(88, 37, 0);
+    color: #ccc;
+  }
+
+  .activado{
+    background-color:brown;
+  }
+  @media screen and (min-width: 768px){
+  .shop_layoutContain {
+    position: relative;
+    height: 10rem;
+}
+  }
+  @media screen and (min-width: 1024px){
+  .shop_containPricipal{
+    flex-direction: row;
+    max-width: 78.75rem;
+    justify-content: center;
+    margin: 6.25rem auto 0 auto; 
+
+  }
+  .shop_section{
+height: 100%;
+  }
+  .shop_layoutContain{
+    max-height: 18rem;
+    height: 18rem;
+  }
+  .shopClothe_contain{
+    display: none;
+}
+.shopClothe_header {
+  max-width: 1260px;
+  margin: 150px auto 0 auto;
+ }
+ .shopClothe_principal {
+  max-width: 1260px;
+  margin: auto;
+}
+.shopClothe_pShop {
+  font-size: 20px;
+  width: 200px;
+  padding: 1rem;
+}
+.shopClothe_img{
+  height: 34.375rem;
+}
+.shopClothe_containSection {
+grid-template-columns: repeat(3,1fr);
+}
+.shopClothe_container:nth-child(-n+3){
+	border-top: 1px solid #000;/* Elige las 2 fotos del principio */
+}
+.shopClothe_container:nth-child(n+1){
+	border-right: 1px solid #000;
+}
+.shopClothe_container:nth-child(n+3){
+	border-right: none;
+}
+.shopClothe_square1, .shopClothe_square2 {
+  display:none;
+}
+.details_container {
+  max-width: 85rem;
+  margin: 150px auto 0 auto;
+  display: flex;
+  gap: 1rem;
+}
+.details_img {
+  max-width: 31.25rem;
+  object-fit: cover;
+  margin: 0;
+}
+details{
+  width: 70%;
+  max-width: 85rem;
+}
+.details_contain{
+  flex-grow: 1;
+  max-width: 85rem;
+}
+.details_containCheck, #agregar, #show {
+  max-width: 17.5rem;
+  }
+
+}

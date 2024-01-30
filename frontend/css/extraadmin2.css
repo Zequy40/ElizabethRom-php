@@ -1,0 +1,44 @@
+/* CSS Document */
+
+.factura {
+	overflow:auto;
+	 height:100px;
+     width:300px;
+}
+
+.factura table {
+    width:700px;
+}
+table{
+    border-spacing: 0;
+    display: flex;/*Se ajuste dinamicamente al tamano del dispositivo**/
+    max-height: 40vh; /*El alto que necesitemos**/
+    overflow-y: auto; /**El scroll verticalmente cuando sea necesario*/
+    overflow-x: hidden;/*Sin scroll horizontal*/
+    table-layout: fixed;/**Forzamos a que las filas tenga el mismo ancho**/
+    width: 30vw; /*El ancho que necesitemos*/
+    
+}
+
+thead{
+    background-color: #f1eee9;
+    position: fixed !important;/*el thead va ser siempre estatico**/
+}
+
+
+
+th,td{
+    font-weight: normal;
+    margin: 0;
+    max-width: 5.5vw; /**Ancho por celda*/
+    min-width: 5.5vw;/**Ancho por celda*/
+    word-wrap: break-word;/*Si el contenido supera el tamano, adiciona a una nueve linea**/
+    font-size: 11px;
+    height: 3.5vh !important;/*El mismo alto para todas las celdas**/
+    padding: 4px;
+    
+}
+tr:nth-child(2n) {
+    background: none repeat scroll 0 0 #edebeb;
+}   
+

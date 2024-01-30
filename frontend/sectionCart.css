@@ -1,0 +1,45 @@
+.sectionCard_link-card {
+	list-style: none;
+	display: flex;
+	padding: 1px;
+	
+	background-image: none;
+	background-size: 400%;
+	border-radius: 7px;
+	background-position: 100%;
+	transition: background-position 0.6s cubic-bezier(0.22, 1, 0.36, 1);
+	
+	margin-bottom: 70px;
+}
+.sectionCard_link-card > a {
+	width: 100%;
+	text-decoration: none;
+	line-height: 1.4;
+	padding: calc(1.5rem - 1px);
+	border-radius: 8px;
+	color: #3a1700;
+	
+	opacity: 0.8;
+}
+.sectionCard_h2 {
+	margin: 0;
+	font-size: 1.25rem;
+	transition: color 0.6s cubic-bezier(0.22, 1, 0.36, 1);
+}
+.sectionCard_p {
+	margin-top: 0.5rem;
+	margin-bottom: 0;
+}
+.sectionCard_link-card:is(:hover, :focus-within) {
+	background-position: 0;
+	background-image: var(--accent-gradient);
+}
+.sectionCard_link-card:is(:hover, :focus-within) h2 {
+	color: rgb(var(--accent-light));
+}
+.sectionCard_icon{
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	gap: 10px;
+}

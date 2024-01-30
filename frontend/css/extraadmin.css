@@ -1,0 +1,44 @@
+/* CSS Document */
+.oculto{
+	display:none;
+	}
+
+.page {
+    position: inherit;
+    margin: 0 10 0 10px;
+    padding: 0 30px;
+    border-left: 1px solid #e7e7e7;
+  }
+
+.tpv {
+    color: #FFF;
+    background-color: #475a96;
+    border-color: #475a96;
+    border-style: none;
+	border-radius: 4px;
+	font-size: 20px;
+}
+
+.tpvletra {
+    color: #FFF;
+	font-size: 12px;
+    
+}
+
+.panel-cuadrotpv {
+	padding:5px 5px;
+	border-bottom:1px solid transparent;
+	border-top-left-radius:3px;
+	border-top-right-radius:3px;
+}
+
+.factura {
+	overflow:auto;
+	 height:100px;
+     width:700px;
+}
+
+.factura table {
+    width:700px;
+}
+

@@ -1,0 +1,31 @@
+/* CSS Document */
+
+#details{
+	padding-left: 25px;
+	padding-right: 25px;
+	
+}
+
+.preciotachado{
+	font-size: 18px !important;
+	color: #CC1C1F !important;
+	text-decoration: line-through !important;
+}
+
+.product-information{
+	padding-bottom:5px !important;
+}
+#reviews form span input {
+	color:#656565 !important;
+}
+
+.preciototal{
+	 color: #FE980F !important;
+  font-size: 18px !important; 
+}
+
+.preciosgrupo{
+	margin-top: 0px !important;
+	color:#828282;
+	font-size: 10px;
+}

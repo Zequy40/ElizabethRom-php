@@ -1,0 +1,218 @@
+.account_container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: 90vh;
+    max-width: 300px;
+    margin: 0 auto;
+    padding: 20px;
+    box-shadow: 0px 0px 10px 0px rgba(0,0,0,0.1);
+}
+.account_p,.account_p2, .account_a{
+    position: relative;
+    font-size: 12px;
+}
+.account_p{
+    margin: 40px 0;
+}
+.account_p2{
+    margin-top: 10px;
+}
+.account_p2:after{
+    position: absolute;
+    content: '';
+    width: 10px;
+    height: 2px;
+    top: 50%;
+    left: -10px;
+    background-color: #743e00;
+    transform: translate(-50%, -50%);
+}
+.account_p2:before{
+    position: absolute;
+    content: '';
+    width: 10px;
+    height: 2px;
+    top: 50%;
+    left: 16px;
+    background-color: #743e00;
+    transform: translate(-50%, -50%);
+}
+.account_a{
+    color: #743e00;
+    text-transform: capitalize;
+    font-style: italic;
+}
+
+.account_h2{
+    font-size: 16px;
+    color: #743e00;
+}
+
+.account_form-group button {
+    padding: 7px 20px;
+    background-color: #743e00;
+    color: white;
+    border: none;
+    border-radius: 3px;
+    cursor: pointer;
+    margin-top: 20px;
+}
+
+.account_form-group a {
+    padding: 7px 20px;
+    background-color: #043610;
+    color: white;
+    border: none;
+    border-radius: 3px;
+    cursor: pointer;
+    margin-top: 20px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+}
+
+.account_form-group button:hover {
+    background-color: #0056b3;
+}
+
+.account_form__group {
+position: relative;
+padding: 20px 0 0;
+width: 100%;
+max-width: 180px;
+}
+
+.account_form__field {
+font-family: inherit;
+width: 100%;
+border: none;
+border-bottom: 2px solid #9b9b9b;
+outline: 0;
+font-size: 13px;
+color: #000000;
+padding: 7px 0;
+background: transparent;
+transition: border-color 0.2s;
+}
+
+.account_form__field::placeholder {
+color: transparent;
+}
+
+.account_form__field:placeholder-shown ~ .form__label {
+font-size: 11px;
+cursor: text;
+top: 20px;
+}
+
+.account_form__label {
+position: absolute;
+top: 0;
+display: block;
+transition: 0.2s;
+font-size: 11px;
+color: #9b9b9b;
+pointer-events: none;
+}
+
+.account_form__field:focus {
+padding-bottom: 6px;
+font-weight: 700;
+border-width: 3px;
+border-image: linear-gradient(to right, #743e00, #a76d00);
+border-image-slice: 1;
+}
+
+.account_form__field:focus ~ .account_form__label {
+position: absolute;
+top: 0;
+display: block;
+transition: 0.2s;
+font-size: 13px;
+color: #925000;
+font-weight: 700;
+}
+
+/* reset input */
+.account_form__field:required, .account_form__field:invalid {
+box-shadow: none;
+}
+
+.account_container-create{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    max-width: 300px;
+    margin: 85px auto;
+    padding: 20px;
+    padding-bottom: 70px;
+    box-shadow: 0px 0px 10px 0px rgba(0,0,0,0.1);
+}
+
+.contain_grid{
+    display: grid;
+    gap: 1rem;
+    grid-auto-flow: dense;
+    grid-auto-rows: auto;
+    grid-template-columns: repeat(auto-fill, minmax(19rem, 1fr));
+    align-items: center;
+}
+.account_grid-group{
+padding: 20px;
+width: 100%;
+border: 1px solid #444;
+border-radius: 10px;
+background-color: #5f340085;
+color:whitesmoke
+}
+@media screen and (min-width: 768px) {
+.account_container {
+    
+    max-width: 31.25rem;
+    
+}
+.account_form__group {
+    
+    width: 100%;
+    max-width: 250px;
+    display: flex;
+    justify-content: center;
+    }
+
+#login-form{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+.p{
+   margin-bottom: 10px;
+   margin-top: 10px; 
+}
+.account_h2{
+    font-size: 20px;
+}}
+
+@media screen and (min-width: 1024px){
+    .account_container {
+      padding-top: 5.625rem;
+      max-width: 78.75rem;
+      max-height: 22.25rem;
+      margin: 11.875rem auto 0 auto ;
+      justify-content: flex-start; 
+    align-items: center;
+    height: 100%;
+    box-shadow: none;
+  }
+  .account_form__field {
+    
+    outline: none;
+    font-size: 18px;
+    
+    }
+  }
