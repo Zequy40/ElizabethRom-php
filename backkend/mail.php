@@ -47,7 +47,7 @@ use PHPMailer\PHPMailer\PHPMailer;
                         
                             //Recipients
                             $mail->setFrom('dptweb@pluscover.es', 'Administración');
-                            $mail->addBCC('skyditec@gmail.com', 'Pedido');
+                            $mail->addCC('skyditec@gmail.com', 'Pedido');
                             $mail->addAddress($cliente);
                         
                             //Content
@@ -61,7 +61,7 @@ use PHPMailer\PHPMailer\PHPMailer;
                         } catch (Exception $e) {
                             echo 'No se envío el mensaje.', $mail->ErrorInfo;
                         }
-                        header(sprintf("Location:order.php"));
+                        header(sprintf("Location:orders.php"));
                         
 ?>
 

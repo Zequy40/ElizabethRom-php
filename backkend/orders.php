@@ -15,42 +15,14 @@ if(isset($_POST['update_status'])){
     $name = filter_var($name, FILTER_SANITIZE_STRING);
     $qty = $_POST['qty'];
     
-    if($name == "Payer"){
-        try {
-            // Comienza una transacción
-            $conn->beginTransaction();
-            
-            // Obtiene el stock actual del producto
-            $product = $conn->prepare("SELECT stock FROM products WHERE id = ?");
-            $product->execute([$productId]);
-            $productData = $product->fetch(PDO::FETCH_ASSOC);
-            $stock = $productData['stock'];
-            
-            // Actualiza el stock del producto restando 1
-            $stock_total = $stock - $qty;
-            $update_stock = $conn->prepare("UPDATE products SET stock = ? WHERE id = ?");
-            $update_stock->execute([$stock_total, $productId]);
-            
-            // Actualiza el estado del pedido
-            $update_product = $conn->prepare("UPDATE orders SET orderStatus = ? WHERE id = ?");
-            $update_product->execute([$name, $pid]);
-            
-            // Confirma la transacción
-            $conn->commit();
-            
-            $message[] = 'Pedido Actualizado con exito!';
-        } catch (PDOException $e) {
-            // Si hay un error, revierte la transacción
-            $conn->rollBack();
-            $message[] = 'Erreur lors de la mise à jour de l\'état du Pedidos.';
-        }
-    } else {
+    
+     
         // Si el estado no requiere actualización del stock, solo actualiza el estado del pedido
         $update_product = $conn->prepare("UPDATE orders SET orderStatus = ? WHERE id = ?");
         $update_product->execute([$name, $pid]);
         $message[] = 'Pedido Actualizado con exito!';
         header("location:mail.php");
-    }
+ 
 }
 
         if(isset($_POST["delete"])){
@@ -150,7 +122,7 @@ if(isset($_POST['update_status'])){
                           Total
                       </th>
                       <th>
-                          
+                        
                       </th>
                       <th class="text-center">
                           Estado
@@ -193,7 +165,7 @@ if(isset($_POST['update_status'])){
             echo '<td><div class="product-img">
                       <img src="img/product/'.$order['product_image'].'" alt="Product Image" class="img-size-50">
                     </div></td>';
-            echo '<td><small>Commandé le: ' . $order['orderDate'] . '</small></td>';
+            echo '<td><small>Pedido el: ' . $order['orderDate'] . '</small></td>';
             echo '<td>' . $order['product_name'] . '</td>';
             echo '<td class="project_progress">' . $order['quantity'] . '</td>';
             echo '<input type="hidden" name="qty" value="'.$order['quantity'].'">';
@@ -234,6 +206,8 @@ echo '</select><br>';
 			else
 			{
 			echo '<span class="text-success fs-1">Entregado</span>';
+      echo '<td></td>';
+      echo '<td></td>';
 			}
 
     

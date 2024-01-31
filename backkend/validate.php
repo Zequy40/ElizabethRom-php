@@ -35,7 +35,7 @@ if(!isset($user_id)){
       <div class="container-fluid">
         <div class="row mb-2">
           <div class="col-sm-6">
-            <h1>Terminer</h1>
+            <h1>Pedidos</h1>
           </div>
           <div class="col-sm-6">
             <ol class="breadcrumb float-sm-right">
@@ -71,20 +71,20 @@ if(!isset($user_id)){
                           Producto
                       </th>
                       <th>
+                          Color
+                      </th>
+                      <th>
+                          Talla
+                      </th>
+                      <th>
                           cantidad
                       </th>
                       <th class="text-center">
                         Precio
                       </th>
-                      <th>
-                          Metodo de pago
-                      </th>
                       <th class="text-center">
                           Estado
                       </th>
-                      <th>
-                      </th>
-                      
                   </tr>
               </thead>
               <tbody>
@@ -108,25 +108,25 @@ if(!isset($user_id)){
     // Recorre los usuarios y sus pedidos
     foreach ($ordersByUser as $userName => $userOrders) {
         echo '<tr>';
-        echo '<td colspan="9"><strong>' . $userName . '</strong></td>';
+        echo '<td colspan="10"><strong>' . $userName . '</strong></td>';
         echo '</tr>';
 
         foreach ($userOrders as $order) {
             echo '<tr>';
             echo '<td><div class="product-img">
-                      <img src="images/'.$order['product_image'].'" alt="Product Image" class="img-size-50">
+                      <img src="img/product/'.$order['product_image'].'" alt="Product Image" class="img-size-50">
                     </div></td>';
             echo '<td><small>Efectuado el: ' . $order['orderDate'] . '</small></td>';
             echo '<td>' . $order['product_name'] . '</td>';
             echo '<td class="project_progress">' . $order['quantity'] . '</td>';
+            echo '<td class="project_progress">' . $order['colors'] . '</td>';
+            echo '<td class="project_progress">' . $order['weight'] . '</td>';
             echo '<td>' . $order['product_price'] . ' €</td>';
-            echo '<td>' . $order['paymentMethod'] . '</td>';
+            echo '<td class="text-info"><strong>'.$order['product_price'] * $order['quantity'].'€</strong><td/>';
             echo '<td class="project-state">';
-            echo '<option disabled>'.$order['orderStatus'].'</option>';
+            echo '<option class="text-success" disabled>Recibidos</option>';
             echo '</td>';
-            echo '<td class="project-actions text-right">';
-            echo '<a class="btn btn-primary btn-sm" href="productId.php?id=' . $order['productId'] . '"><i class="fas fa-folder"></i> Voir</a>&nbsp;';
-            echo '</td>';
+            
             echo '</tr>';
         }
     }

@@ -77,12 +77,15 @@ if(!isset($user_id)){
                         Precio 
                       </th>
                       <th>
-                          Metodo de pago
+                          Color
+                      </th>
+					  <th>
+                          Talla
                       </th>
                       <th>
+                          Total
                       </th>
-                      
-                  </tr>
+                    </tr>
               </thead>
               <tbody>
              <?php
@@ -105,7 +108,7 @@ if(!isset($user_id)){
     // Recorre los usuarios y sus pedidos
     foreach ($ordersByUser as $userName => $userOrders) {
         echo '<tr>';
-        echo '<td colspan="9"><strong>' . $userName . '</strong></td>';
+        echo '<td colspan="10"><strong>' . $userName . '</strong></td>';
         echo '</tr>';
 
         foreach ($userOrders as $order) {
@@ -117,15 +120,14 @@ if(!isset($user_id)){
             echo '<td>' . $order['product_name'] . '</td>';
             echo '<td class="project_progress">' . $order['quantity'] . '</td>';
             echo '<td>' . $order['product_price'] . ' €</td>';
-            echo '<td>' . $order['paymentMethod'] . '</td>';
+            echo '<td>' . $order['colors'] . ' </td>';
+            echo '<td>' . $order['weight'] . ' </td>';
+            echo '<td class="text-info"><strong>'.$order['product_price'] * $order['quantity'].'€</strong><td/>';
             echo '<td class="project-state">';
             
-            echo '<span class="text-success fs-1">Entregado</span>';
+            echo '<span class="text-primary fs-1">Entregado</span>';
 
 
-            echo '</td>';
-            echo '<td class="project-actions text-right">';
-            echo '<a class="btn btn-primary btn-sm" href="productId.php?id=' . $order['productId'] . '"><i class="fas fa-folder"></i> Ver</a>&nbsp;';
             echo '</td>';
             echo '</tr>';
         }
