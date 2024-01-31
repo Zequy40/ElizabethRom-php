@@ -172,13 +172,13 @@ include 'conexion/conexion.php';
               </li>
               <li class="nav-item <?php if ($currentPage == 'send.php') { echo 'active'; } ?>">
                 <a href="validate.php" class="nav-link">
-                  <i class="fas fa-solid fa-check text-danger"></i>
+                  <i class="fas fa-solid fa-check text-warning"></i>
                   <p>PEDIDOS RECIBIDOS</p>
                 </a>
               </li>
 				<li class="nav-item <?php if ($currentPage == 'send.php') { echo 'active'; } ?>">
                 <a href="send.php" class="nav-link">
-                  <i class="fas fa-solid fa-plane text-danger"></i>
+                  <i class="fas fa-solid fa-plane text-success"></i>
                   <p>PEDIDOS ENVIADOS</p>
                 </a>
               </li>
