@@ -1,4 +1,5 @@
 <div class="desktop_contain">
+    <div class="desktop_global">
     <div class="global">
         <div class="desktop_container">
             <div class="desktop_logo"><a href="/"><img src="src/assets/logoFinal.svg" alt="LOGO"></a></div>
@@ -49,5 +50,6 @@
             <li class="desktop_li"><a class="a_a" href="contact.php">Contacto</a></li>
             <li class="desktop_li"><a class="a_a" href="cart2.php">Cesta</a></li>
         </ul>
+    </div>
     </div>
 </div>

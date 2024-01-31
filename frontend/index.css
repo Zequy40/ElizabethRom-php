@@ -799,6 +799,8 @@ font-size: 0.8125rem;
     }
     .desktop{
         display: block;
+    }
+    .desktop_limit{
         max-width: 1360px;
         margin: auto;
     }
@@ -924,6 +926,7 @@ font-size: 0.8125rem;
     }
     .desktop{
         display: block;
+        width: 100vw;
     }
     .display-footer{
         position: relative;

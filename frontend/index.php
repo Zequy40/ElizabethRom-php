@@ -38,7 +38,7 @@ header('Content-Type: text/html; charset=utf-8');
         <div class="mobile">
             <?php include 'header.php' ?>
         </div>
-        
+
         <div class="mobile">
             <?php include 'slider.php' ?>
             <?php include 'sectionClothe.php' ?>
@@ -57,11 +57,13 @@ header('Content-Type: text/html; charset=utf-8');
         </div>
         <div class="desktop">
             <?php include 'header_desktop.php' ?>
-            <?php include 'head_desktop.php' ?>
-            <?php include 'sectionClothe.php' ?>
-            <?php include 'sectionDestacado.php' ?>
-            <?php include 'footer_desktop.php' ?>
-            <?php include 'cart.php' ?>
+            <div class="desktop_limit">
+                <?php include 'head_desktop.php' ?>
+                <?php include 'sectionClothe.php' ?>
+                <?php include 'sectionDestacado.php' ?>
+                <?php include 'footer_desktop.php' ?>
+                <?php include 'cart.php' ?>
+            </div>
         </div>
         <?php include 'menu.php' ?>
 
@@ -246,8 +248,8 @@ header('Content-Type: text/html; charset=utf-8');
         user.classList.remove('active')
         cart.style.pointerEvents = "auto";
     })
-    
-    
+
+
     navTablet.addEventListener('pointerdown', function() {
         menuButton.classList.add('activation');
     })
@@ -257,19 +259,25 @@ header('Content-Type: text/html; charset=utf-8');
 
     const headerNav = document.querySelector('.desktop_contain')
     const headerLi = document.querySelectorAll('.a_a')
+    const title = document.querySelector('.desktop_p')
+    const title2 = document.querySelector('.desktop_p1')
     window.addEventListener('scroll', () => {
-        if (window.scrollY > 100){
-            headerNav.classList.add('scrolled')
+        if (window.scrollY > 100) {
+            headerNav.classList.add("scrolled");
+            title.style.color = "#FFF";
+            title2.style.color = "#FFF"
             headerLi.forEach(item => {
-            item.style.color = "#FFF";
-        });
-        }
-        else{
+                item.style.color = "#FFF";
+
+            });
+        } else {
             headerNav.classList.remove('scrolled')
+            title.style.color = "#522b11";
+            title2.style.color = "#000";
             headerLi.forEach(item => {
-            item.style.color = "#000";
-        });
-            
+                item.style.color = "#000";
+            });
+
         }
     })
 </script>
