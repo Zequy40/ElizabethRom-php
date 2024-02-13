@@ -1,4 +1,4 @@
-<?php include '../backkend/conexion/conexion.php';
+<?php include '_backAdmin/conexion/conexion.php';
 session_start();
 
 session_start();
@@ -20,7 +20,7 @@ if (isset($_POST['submit'])) {
         $_SESSION['user_level'] = $row['level'];
         $_SESSION['user_name'] = $row['name'];
 
-        header('location:../index.php');
+        header('location:/index.php');
     } else {
         $message[] = 'Username ou Password incorrect!';
     }
@@ -30,7 +30,7 @@ if (isset($_POST['exit'])) {
     session_unset();
     session_destroy();
 
-    header('location:../index.php');
+    header('location:index.php');
 }
 ?>
 <!DOCTYPE html>
@@ -63,7 +63,7 @@ if (isset($_POST['exit'])) {
         </div>
             <div class="account_container">
                 <div class="contain_grid">
-                    <div class="account_grid-group"><a href="mailto:admin@elibrandrom.es"> Contactar con nosotros</a></div>
+                    <div class="account_grid-group"><a href="mailto:admin@elizabethrom.es"> Contactar con nosotros</a></div>
                     <a href="accountEdit.php"><div class="account_grid-group">Modificar datos</div></a>
                     <a href="account.php"><div class="account_grid-group">Menu Principal Cuenta</div></a>
 

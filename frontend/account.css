@@ -209,10 +209,36 @@ color:whitesmoke
     height: 100%;
     box-shadow: none;
   }
+  .account_container-create{
+   
+    max-width: 100%;
+    
+}
+.account_form__group {
+   max-width: 100%;
+}
+
+.account_form__group .flexform{
+   display: flex;
+    justify-content: center;
+    align-items: center;
+}
   .account_form__field {
     
     outline: none;
     font-size: 18px;
     
     }
+    #login-form {
+    width: 50%;
+    flex-direction: row;
+    gap:40px;
+}
+#login-form-sample{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    max-width:500px;
+}
   }

@@ -1,5 +1,4 @@
 <?php
-include 'conexion/conexion.php';
 session_start();
 
 $user_id = $_SESSION['user_id'];
@@ -29,12 +28,10 @@ if(!isset($user_id)){
 <div class="wrapper">
 
   <!-- Preloader -->
-  <div class="preloader flex-column justify-content-center align-items-center">
-    <img class="animation__wobble" src="dist/img/AdminLTELogo.png" alt="AdminLTELogo" height="60" width="60">
-  </div>
+ 
 
   <!-- Navbar -->
- <?php include 'components/header.php'; ?>
+  <?php include 'components/header.php'; ?>
 
   <!-- Content Wrapper. Contains page content -->
   <div class="content-wrapper">
@@ -91,14 +88,14 @@ if(!isset($user_id)){
           <!-- fix for small devices only -->
           <div class="clearfix hidden-md-up"></div>
 
-          <div class="col-12 col-sm-6 col-md-3" onclick="window.location.href = 'inprogress.php';" style="cursor: pointer">
+          <div class="col-12 col-sm-6 col-md-3" onclick="window.location.href = 'validate.php';" style="cursor: pointer">
             <div class="info-box mb-3">
               <span class="info-box-icon bg-warning elevation-1"><i class="fa fa-solid fa-hourglass-half"></i></span>
 
               <div class="info-box-content">
                 <span class="info-box-text">Pedidos en espera</span>
                 <?php 
-                            $orders = $conn ->prepare("SELECT COUNT(*) AS orders_pending FROM orders WHERE orderStatus='En Attente'");
+                            $orders = $conn ->prepare("SELECT COUNT(*) AS orders_pending FROM orders WHERE orderStatus= 0");
 								$orders -> execute();
 								$result = $orders->fetch(PDO::FETCH_ASSOC);
                     ?>
@@ -206,7 +203,7 @@ if(!isset($user_id)){
 
                     <div class="progress-group">
                         <?php 
-                            $orders = $conn ->prepare("SELECT COUNT(*) AS complete_pedidos, SUM(quantity) AS complete_quantity FROM orders WHERE orderStatus='Complet'");
+                            $orders = $conn ->prepare("SELECT COUNT(*) AS complete_pedidos, SUM(quantity) AS complete_quantity FROM orders WHERE orderStatus=3");
 								$orders -> execute();
 								$resultado = $orders->fetch(PDO::FETCH_ASSOC);
                     ?>
@@ -225,11 +222,11 @@ if(!isset($user_id)){
                     <!-- /.progress-group -->
                     <div class="progress-group">
                         <?php 
-                            $orders = $conn ->prepare("SELECT COUNT(*) AS complete_pedidos, SUM(quantity) AS complete_quantity FROM orders WHERE orderStatus='En progres'");
+                            $orders = $conn ->prepare("SELECT COUNT(*) AS complete_pedidos, SUM(quantity) AS complete_quantity FROM orders WHERE orderStatus=2");
 								$orders -> execute();
 								$result = $orders->fetch(PDO::FETCH_ASSOC);
                     ?>
-                      <span class="progress-text">Envoie en cours</span>
+                      <span class="progress-text">Enviado</span>
                       <span class="float-right"><b><?php echo $result['complete_pedidos']?></b>/<?php echo $results['total_pedidos']?></span>
                       <div class="progress progress-sm">
                           <?php 
@@ -245,7 +242,7 @@ if(!isset($user_id)){
                     <!-- /.progress-group -->
                     <div class="progress-group">
                         <?php 
-                            $orders = $conn ->prepare("SELECT COUNT(*) AS complete_pedidos, SUM(quantity) AS complete_quantity FROM orders WHERE orderStatus='Complet'");
+                            $orders = $conn ->prepare("SELECT COUNT(*) AS complete_pedidos, SUM(quantity) AS complete_quantity FROM orders WHERE orderStatus=3");
 								$orders -> execute();
 								$resultad = $orders->fetch(PDO::FETCH_ASSOC);
                     ?>
@@ -438,7 +435,7 @@ FROM
                   <div class="card-body p-0">
                     <ul class="users-list clearfix">
                     <?php
-                         $select_client = $conn->prepare("SELECT * FROM users WHERE user='Client' ORDER BY id DESC LIMIT 8 " ); 
+                         $select_client = $conn->prepare("SELECT COUNT(*) AS client FROM users WHERE user='Cliente' ORDER BY id DESC LIMIT 8 " ); 
     $select_client->execute();
     if($select_client->rowCount() > 0){
      while($fetch_client = $select_client -> fetch(PDO::FETCH_ASSOC)){

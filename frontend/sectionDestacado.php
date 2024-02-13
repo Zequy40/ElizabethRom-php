@@ -1,5 +1,5 @@
 <?php
-include '../backkend/conexion/conexion.php';
+include '_backAdmin/conexion/conexion.php';
 ?>
 
 <section class="sectionDestacado_containerSection">
@@ -13,7 +13,7 @@ if ($selectSlider->rowCount() > 0) {
         ?>
   <div class="sectionDestacado_containImage">
       <a href="<?php echo $fetch["src"]?>" class="sectionDestacado_backgroundImage"><div></div></a>
-      <img class="sectionDestacado_img" src="../backkend/img/product/<?php echo $fetch["img"]?>" alt="Imagen 2">
+      <img class="sectionDestacado_img" src="_backAdmin/img/product/<?php echo $fetch["img"]?>" alt="Imagen 2">
       
   </div>
   <?php

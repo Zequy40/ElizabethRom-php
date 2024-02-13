@@ -49,12 +49,12 @@ if(isset($_POST['update_status'])){
       <div class="container-fluid">
         <div class="row mb-2">
           <div class="col-sm-6">
-            <h1>Produits</h1>
+            <h1>Pedidos</h1>
           </div>
           <div class="col-sm-6">
             <ol class="breadcrumb float-sm-right">
               <li class="breadcrumb-item"><a href="#">Home</a></li>
-              <li class="breadcrumb-item active">Commande</li>
+              <li class="breadcrumb-item active">Pedidos</li>
             </ol>
           </div>
         </div>
@@ -67,7 +67,7 @@ if(isset($_POST['update_status'])){
       <!-- Default box -->
       <div class="card">
         <div class="card-header">
-          <h3 class="card-title">Produits Commandés</h3>
+          <h3 class="card-title">Pedido cliente</h3>
 
          
         </div>
@@ -78,23 +78,23 @@ if(isset($_POST['update_status'])){
                   <tr>
                       
                       <th>
-                          Nom 
+                          Nombre 
                       </th>
                       <th></th>
                       <th>
-                          Produit
+                          Producto
                       </th>
                       <th>
-                          Quantité
+                          Quantidad
                       </th>
                       <th >
-                        Prix unitaire
+                        Precio
                       </th>
                       <th>
-                          Moyen de payments
+                          Metodo de pago
                       </th>
                       <th class="text-center">
-                          État
+                          Estado
                       </th>
                       
                   </tr>
@@ -127,19 +127,28 @@ if(isset($_POST['update_status'])){
         foreach ($userOrders as $order) {
             echo '<tr>';
             echo '<td><div class="product-img">
-                      <img src="images/'.$order['product_image'].'" alt="Product Image" class="img-size-50">
+                      <img src="img/product/'.$order['product_image'].'" alt="Product Image" class="img-size-50">
                     </div></td>';
-            echo '<td><small>Commandé le: ' . $order['orderDate'] . '</small></td>';
+            echo '<td><small>Hecho el: ' . $order['orderDate'] . '</small></td>';
             echo '<td>' . $order['product_name'] . '</td>';
             echo '<td class="project_progress">' . $order['quantity'] . '</td>';
             echo '<td>' . $order['product_price'] . ' €</td>';
             echo '<td>' . $order['paymentMethod'] . '</td>';
-            echo '<td class="project-state">'.$order['orderStatus'].'</td>';
+            echo '<td class="project-state">';
+if ($order['orderStatus'] == 1) {
+    echo "Pagado";
+} elseif ($order['orderStatus'] == 2) {
+    echo "Enviado";
+} elseif ($order['orderStatus'] == 3) {
+    echo "Entregado";
+}
+echo '</td>';
+
             echo '</tr>';
         }
     }
 } else {
-    echo '<h1>Pas de produit <span class="badge bg-primary">Actuellement</span></h1>';
+    echo '<h1>No hay productos<span class="badge bg-primary">Actuellemente</span></h1>';
 }?>
                 
               </tbody>
@@ -147,7 +156,7 @@ if(isset($_POST['update_status'])){
         </div>
         
         <!-- /.card-body -->
-      </div><a class="btn btn-primary btn-sm" href="users-only.php?id=<?php echo $cmdUser;?>"><i class="fas fa-reply"></i> Retour</a>&nbsp;
+      </div><a class="btn btn-primary btn-sm" href="users-only.php?id=<?php echo $cmdUser;?>"><i class="fas fa-reply"></i> volver</a>&nbsp;
       <!-- /.card -->
       
 

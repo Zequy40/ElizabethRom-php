@@ -394,8 +394,8 @@ gap: 10px;
   display: block;
 }
 .modal{
-  position: absolute;
-  top: 0;
+  position: fixed;
+  top: 10px;
   left: 0;
   width: 100vw;
   height: 100vh;
@@ -404,7 +404,7 @@ gap: 10px;
   display: none;
 }
 .modal-dialog{
-  width: 500px;
+  
   height: 300px;
   border-radius: 10px;
   background-color: #efefef;
@@ -426,7 +426,7 @@ gap: 10px;
   margin-top: 0.625rem;
   font-family: Alice;
   font-size: 1.875rem;
-  color: red;
+  color: black;
   font-weight: 700;
   padding: 1rem;
 }

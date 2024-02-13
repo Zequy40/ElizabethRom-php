@@ -1,5 +1,5 @@
-<?php 
-include '../backkend/conexion/conexion.php';
+
+<?php include '_backAdmin/conexion/conexion.php';
 if(isset($_POST['add_product'])){
   $id_product=$_GET['id'];
   $orderStatus = 0;
@@ -54,7 +54,7 @@ if(isset($_POST['add_product'])){
         ?>
 <div class="details_container">
   
-  <img src="../../../backkend/img/product/<?= $fetch["product_image"]?>" alt="" class="details_img">
+  <img src="_backAdmin/img/product/<?= $fetch["product_image"]?>" alt="" class="details_img">
   <div class="details_contain">
     <div class="details_whislist">
   <h2 class="details_h2"><?= $fetch["product_name"]?></h2>

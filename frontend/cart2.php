@@ -1,4 +1,4 @@
-<?php include '../backkend/conexion/conexion.php';
+<?php include '_backAdmin/conexion/conexion.php';
 session_start();
 if (isset($_SESSION['user_id'])) {
     $user_id = $_SESSION['user_id'];
@@ -9,8 +9,8 @@ if (isset($_SESSION['user_id'])) {
 if(isset($_POST['confirm'])){
     $pid = $_POST['pid'];
      // Actualiza el estado del pedido
-            $update_product = $conn->prepare("UPDATE orders SET orderStatus = ? WHERE userId = ? AND orderStatus = 0");
-            $update_product->execute([1, $pid]);
+            $update_product = $conn->prepare("UPDATE orders SET orderStatus = ?, send = ? WHERE userId = ? AND orderStatus = 0");
+            $update_product->execute([1, 1, $pid]);
             header("location:mail.php");
 			exit;
 			
@@ -78,7 +78,7 @@ header('Content-Type: text/html; charset=utf-8');
                 <div class="display-tag">
                     <div class="group">
                         
-                        <img src="../backkend/img/product/<?= $fetch['product_image'] ?>" alt="">
+                        <img src="_backAdmin/img/product/<?= $fetch['product_image'] ?>" alt="">
                         <div class="description">
                             <p class="p_ind"><?= $fetch['product_name'] ?></p>
                             <p class="c_ind"><?= $numero_format ?> €</p>
@@ -94,7 +94,7 @@ header('Content-Type: text/html; charset=utf-8');
                             <form action="" method="post">
                                 <input type="hidden" name="productId" value="<?= $fetch['id'] ?>">
                                 <div class="blq">
-                                    <div class="blq"><a href="../shop/edit.php?id=<?= $fetch['id'] ?>"><span><svg
+                                    <div class="blq"><a href="edit.php?id=<?= $fetch['id'] ?>"><span><svg
                                                     xmlns="http://www.w3.org/2000/svg" class="blq_svg"
                                                     fill="currentColor" viewBox="0 0 16 16">
                                                     <path

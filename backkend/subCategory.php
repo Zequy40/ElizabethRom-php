@@ -81,7 +81,7 @@ $select_products->execute();
 
 <form method="post" action="">
     <input type="hidden" name="showOnlyActive" value="<?= ($showOnlyActive ? 'false' : 'true'); ?>">
-    <button type="submit"class="btn btn-primary btn-sm"><?= ($showOnlyActive ? 'Tout Montrer' : 'Montrer Seulement Actif'); ?></button>
+    <button type="submit"class="btn btn-primary btn-sm"><?= ($showOnlyActive ? 'Mostar Todo' : 'Activo solamente'); ?></button>
 </form>
 
 
@@ -112,7 +112,7 @@ $select_products->execute();
                               </a>
                               <br>
                               <small>
-                              Created <?= $fetch_product['creationDate']; ?>
+                              Creado el <?= $fetch_product['creationDate']; ?>
                           </small>
                           
                       </td>

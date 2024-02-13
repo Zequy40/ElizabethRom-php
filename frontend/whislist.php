@@ -1,5 +1,5 @@
 
-<?php include '../backkend/conexion/conexion.php';
+<?php include '_backAdmin/conexion/conexion.php';
 session_start();
 
 if (isset($_SESSION['user_id'])) {
@@ -13,7 +13,7 @@ if (isset($_POST['exit'])) {
     session_unset();
     session_destroy();
 
-header('location:../index.php');
+header('location:index.php');
 }
 ?>
 <!DOCTYPE html>
@@ -35,6 +35,7 @@ header('location:../index.php');
     <main>
     <div class="mobile">
             <?php include 'header.php' ?>
+            
         </div>
         <div class="tablet">
            
@@ -50,14 +51,14 @@ header('location:../index.php');
     <h2 class="whish_h2">Lista de favoritos</h2>
     <?php if (!isset($user_id) || empty($user_id)) {
     echo '<form id="whish_login-form">
-       <p class="whish_p">Para poder ver su lista de favoritos, necesita loguearse o crear una cuenta.</p>
+       <p class="whish_p">Para poder ver su lista de favoritos, necesita iniciar sesión o crear una cuenta.</p>
         
            
         <div class="whish_form-group">
-            <a class="whish_btn" href="../account/account.php">Loguearse</a>
+            <a class="whish_btn" href="account.php">Loguearse</a>
         </div>
         <div class="whish_form-group">
-            <a class="whish_btn1" href="../account/accountCreate.php">Crear cuenta</a>
+            <a class="whish_btn1" href="accountCreate.php">Crear cuenta</a>
         </div>
         
     </form>';
@@ -70,8 +71,8 @@ header('location:../index.php');
                 
     ?>
     
-    <a href="../shop/details2.php?id=<?= $fetch["productId"]?>"><div class="group">
-        <img src="../../../backkend/img/product/<?= $fetch['product_image'] ?>" alt="" style="width: 3.625rem;">
+    <a href="details2.php?id=<?= $fetch["productId"]?>"><div class="group">
+        <img src="_backAdmin/img/product/<?= $fetch['product_image'] ?>" alt="" style="width: 3.625rem;">
         <div class="description">
             <p class="p_ind"><?= $fetch['product_name'] ?></p>
             <p class="c_ind"><?= number_format($fetch['product_price'], 2, ',', ' ') ?> €</p>
@@ -98,6 +99,7 @@ header('location:../index.php');
     const menuButton = document.querySelector('#menuNav');
     const closeTablet = document.querySelector('#close');
     const nav = document.querySelector('#menu');
+    
 
     navTablet.addEventListener('pointerdown', function() {
         menuButton.classList.add('activation');
@@ -105,5 +107,37 @@ header('location:../index.php');
     closeTablet.addEventListener('pointerdown', () => {
         menuButton.classList.remove('activation');
     })
+    
+
+    const icons = document.querySelectorAll(".footer_icon");
+    const active = document.querySelector(".footer_iconMenu")
+
+    // Agrega un evento de clic al botón del menú
+    nav.addEventListener('pointerdown', function() {
+        nav.classList.add('actived')
+        menuButton.classList.toggle('activation');
+
+
+        icons.forEach(icon => {
+            if (icon.classList.contains('linked')) {
+                const correspondingDiv = icon.parentElement;
+                if (nav.classList.contains('actived')) {
+                    if (correspondingDiv.classList.contains('actived')) {
+                        correspondingDiv.classList.remove('actived');
+                        nav.classList.add('actived')
+                        active.classList.add('initial')
+                    } else {
+                        correspondingDiv.classList.add('actived')
+                        nav.classList.remove('actived')
+                        active.classList.remove('initial')
+                    }
+                }
+            };
+        })
+
+
+    })
+
+
 </script>
     </html>

@@ -65,13 +65,14 @@
 .sectionclothe_containerSection{
     margin-top: 9.375rem;
 }
-.sectionclothe_image, .sectionclothe_contain,.sectionclothe_img{
-    max-height: 31.25rem;
-}
+
 .sectionclothe_h3{
     color: white;
     background-color: #4e2e193e;
     border-radius: 5px;
     padding: .5rem;
+}
+.sectionclothe_img {
+    max-width: 250px;
 }
 }

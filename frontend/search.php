@@ -1,6 +1,6 @@
 <?php
 
-include '../backkend/conexion/conexion.php';
+include '_backAdmin/conexion/conexion.php';
 ?>
 <!DOCTYPE html>
 <html lang="es">
@@ -53,7 +53,7 @@ if ($rowCount > 0) {
                         $numero_format = number_format($fetch['product_price'], 2, ",", '.');
                         echo '<a href="shop/details.php?id=' . $fetch["productId"] . '">
                 <div class="group">
-                    <img src="../backkend/img/product/' . $fetch['product_image'] . '" alt="" style="width: 3.625rem;">
+                    <img src="_backAdmin/img/product/' . $fetch['product_image'] . '" alt="" style="width: 3.625rem;">
                     <div class="description">
                         <p class="p_ind">' . $fetch['product_name'] . '</p>
                         <p class="c_ind">' . $numero_format . ' €</p>

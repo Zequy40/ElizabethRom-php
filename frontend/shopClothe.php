@@ -1,4 +1,4 @@
-<?php include '../backkend/conexion/conexion.php';
+<?php include '_backAdmin/conexion/conexion.php';
 $idCat = $_GET['id'];
 
 ?>
@@ -87,7 +87,7 @@ $idCat = $_GET['id'];
             </nav>
             <?php
 
-            $orders = $conn->prepare("SELECT COUNT(*) AS total_clothe FROM products WHERE idCategory=" . $idCat);
+            $orders = $conn->prepare("SELECT COUNT(*) AS total_clothe FROM products WHERE idCategory = $idCat OR idCategory2 = $idCat OR idCategory3 = $idCat OR idCategory4 = $idCat");
             $orders->execute();
             $result = $orders->fetch(PDO::FETCH_ASSOC);
             ?>
@@ -109,7 +109,8 @@ $idCat = $_GET['id'];
         $cat = $_GET['cat'];
         switch ($cat) {
             case "cat":
-                $consultaPersonalizada = "SELECT * FROM `products` WHERE idCategory=" . $idCat;
+                $consultaPersonalizada = "SELECT * FROM `products` WHERE idCategory = $idCat OR idCategory2 = $idCat OR idCategory3 = $idCat OR idCategory4 = $idCat";
+;
                 break;
 
             case "subcat":
@@ -138,7 +139,7 @@ $idCat = $_GET['id'];
                         <div class="shopClothe_container">
                             <a href="details.php?id=<?php echo $fetch['id'] ?>" class="shopClothe_btn">
                                 <div class="shopClothe_shop">
-                                    <img src="../backkend/img/product/<?php echo $fetch['productImage1'] ?>" alt="" class="shopClothe_img">
+                                    <img src="_backAdmin/img/product/<?php echo $fetch['productImage1'] ?>" alt="" class="shopClothe_img">
                                     <p class="shopClothe_pShop">Añadir al carrito</p>
                                 </div>
                                 <div class="shopClothe_containP">

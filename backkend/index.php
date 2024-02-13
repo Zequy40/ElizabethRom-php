@@ -28,7 +28,7 @@ if(isset($_POST['submit'])){
       
       header('location:home.php');
    }else{
-      $message[] = 'Username ou Password incorrect!';
+      $message[] = 'Usuario o contraseña incorrecta!';
    }
 
 }
@@ -62,7 +62,7 @@ if(isset($_POST['submit'])){
       foreach($message as $message){
          echo '
          <div class="alert alert-danger alert-dismissible fade show" role="alert">
-  <strong>Attention</strong><br> '.$message.'
+  <strong>Cuidado</strong><br> '.$message.'
   <button type="button" class="close" data-dismiss="alert" aria-label="Close">
     <span aria-hidden="true">&times;</span>
   </button>
@@ -73,11 +73,11 @@ if(isset($_POST['submit'])){
 
   <div class="card">
     <div class="card-body login-card-body">
-      <p class="login-box-msg">Sign in pour administration</p>
+      <p class="login-box-msg">Inicie sesión en administración</p>
 
       <form action="" method="post">
         <div class="input-group mb-3">
-          <input type="text" class="form-control" name="username" required placeholder="entrez votre username" maxlength="50" oninput="this.value = this.value.replace(/\s/g, '')">
+          <input type="text" class="form-control" name="username" required placeholder="usuario" maxlength="50" oninput="this.value = this.value.replace(/\s/g, '')">
           <div class="input-group-append">
             <div class="input-group-text">
               <span class="fas fa-envelope"></span>
@@ -85,14 +85,14 @@ if(isset($_POST['submit'])){
           </div>
         </div>
         <div class="input-group mb-3">
-          <input type="password" class="form-control" name="pass" required placeholder="entrez votre password" maxlength="50" oninput="this.value = this.value.replace(/\s/g, '')">
+          <input type="password" class="form-control" name="pass" required placeholder="contraseña" maxlength="50" oninput="this.value = this.value.replace(/\s/g, '')">
           <div class="input-group-append">
             <div class="input-group-text">
               <span class="fas fa-lock"></span>
             </div>
           </div>
           <div class="col-4">
-            <button type="submit" class="btn btn-primary btn-block" value="login" name="submit">Sign In</button>
+            <button type="submit" class="btn btn-primary btn-block" value="login" name="submit">Entrar</button>
           </div>
         </div>
       </form>

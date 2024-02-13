@@ -1,5 +1,5 @@
 <?php 
-include '../backkend/conexion/conexion.php';
+include '_backAdmin/conexion/conexion.php';
 session_start();
 
 if (isset($_SESSION['user_id'])) {

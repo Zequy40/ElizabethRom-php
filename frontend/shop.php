@@ -1,5 +1,5 @@
 
-<?php include '../backkend/conexion/conexion.php';
+<?php include '_backAdmin/conexion/conexion.php';
 session_start();
 if (isset($_SESSION['user_id'])) {
     $user_id = $_SESSION['user_id'];
@@ -44,11 +44,11 @@ header('location:../index.php');
             <?php include 'header_desktop.php' ?>
          
         </div>
-    <?php include 'cart.php' ?>
+    
         <section class="shop_section">
     <div class="shop_containPricipal">
     <?php 
-        $fetch_category = $conn -> prepare("SELECT categoryName, src, imgBack,id FROM `category` WHERE menu=1 AND status=1");
+        $fetch_category = $conn -> prepare("SELECT categoryName, src, imgBack,id FROM `category` WHERE status=1");
         $fetch_category -> execute();
         if ($fetch_category->rowCount() > 0) {
             while($fetch = $fetch_category->fetch(PDO::FETCH_ASSOC)){
@@ -80,15 +80,15 @@ header('location:../index.php');
 
 	</section>
     <div class="mobile">
-            <?php include 'footerAccount.php' ?>
+            <?php include 'footer.php' ?>
             
     </div>
- <?php include 'menu.php' ?>
+ 
  <div class="desktop">
             <?php include 'footer_desktop.php' ?>
          
         </div>
-
+<?php include 'menu.php' ?>
     </main>
 </body>
 <script>
@@ -96,22 +96,45 @@ header('location:../index.php');
     const menuButton = document.querySelector('#menuNav');
     const closeTablet = document.querySelector('#close');
     const nav = document.querySelector('#menu');
-
-    navTablet.addEventListener('pointerdown', function() {
-        menuButton.classList.add('activation');
-    })
-    closeTablet.addEventListener('pointerdown', () => {
-        menuButton.classList.remove('activation');
-    })
-
-  
     
+
     navTablet.addEventListener('pointerdown', function() {
         menuButton.classList.add('activation');
     })
     closeTablet.addEventListener('pointerdown', () => {
         menuButton.classList.remove('activation');
     })
+    
+
+    const icons = document.querySelectorAll(".footer_icon");
+    const active = document.querySelector(".footer_iconMenu")
+
+    // Agrega un evento de clic al botón del menú
+    nav.addEventListener('pointerdown', function() {
+        nav.classList.add('actived')
+        menuButton.classList.toggle('activation');
+
+
+        icons.forEach(icon => {
+            if (icon.classList.contains('linked')) {
+                const correspondingDiv = icon.parentElement;
+                if (nav.classList.contains('actived')) {
+                    if (correspondingDiv.classList.contains('actived')) {
+                        correspondingDiv.classList.remove('actived');
+                        nav.classList.add('actived')
+                        active.classList.add('initial')
+                    } else {
+                        correspondingDiv.classList.add('actived')
+                        nav.classList.remove('actived')
+                        active.classList.remove('initial')
+                    }
+                }
+            };
+        })
+
+
+    })
+
 
 </script>
 

@@ -1,4 +1,4 @@
-<?php include '../backkend/conexion/conexion.php';
+<?php include '_backAdmin/conexion/conexion.php';
 session_start();
 if (isset($_SESSION['user_id'])) {
   $user_id = $_SESSION['user_id'];
@@ -63,7 +63,7 @@ if (isset($_POST['add_product'])) {
         
       </div>
       <div class="modal-body">
-      Inicia sessión o crea una cuenta para poder comprar pulsando el siguiente enlace: <a href="account.php">Cuenta</a>
+      Inicia sesión o crea una cuenta para poder comprar pulsando el siguiente enlace: <a href="account.php">Cuenta</a>
       </div>
       <div class="modal-footer">
         <button type="button" class="btn-secondary" data-dismiss="modal">Cerrar</button>
@@ -73,7 +73,7 @@ if (isset($_POST['add_product'])) {
 </div>
   <nav class="shopClothe_contain">
     <div class="shopClothe_title" id="titleHeaderReturn">
-      <a class="details_flex-btn" href='./shop.php'> <svg xmlns="http://www.w3.org/2000/svg" fill="currentColor" class="shopClothe_svg" viewBox="0 0 16 16">
+      <a class="details_flex-btn" href='shop.php'> <svg xmlns="http://www.w3.org/2000/svg" fill="currentColor" class="shopClothe_svg" viewBox="0 0 16 16">
           <path fill-rule="evenodd" d="M15 8a.5.5 0 0 0-.5-.5H2.707l3.147-3.146a.5.5 0 1 0-.708-.708l-4 4a.5.5 0 0 0 0 .708l4 4a.5.5 0 0 0 .708-.708L2.707 8.5H14.5A.5.5 0 0 0 15 8" />
         </svg>
         <p>MI CESTA</p>
@@ -112,7 +112,7 @@ if (isset($_POST['add_product'])) {
     ?>
         <div class="details_container">
 
-          <img src="../backkend/img/product/<?= $fetch["productImage1"] ?>" alt="" class="details_img">
+          <img src="_backAdmin/img/product/<?= $fetch["productImage1"] ?>" alt="" class="details_img">
           <div class="details_contain">
             <div class="details_whislist">
               <h2 class="details_h2"><?= $fetch["productName"] ?></h2>

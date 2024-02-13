@@ -40,7 +40,7 @@ if(!isset($user_id)){
           <div class="col-sm-6">
             <ol class="breadcrumb float-sm-right">
               <li class="breadcrumb-item"><a href="#">Home</a></li>
-              <li class="breadcrumb-item active">Client</li>
+              <li class="breadcrumb-item active">Cliente</li>
             </ol>
           </div>
         </div>
@@ -53,7 +53,7 @@ if(!isset($user_id)){
       <!-- Default box -->
       <div class="card">
         <div class="card-header">
-          <h3 class="card-title">Clients</h3>
+          <h3 class="card-title">Clientes</h3>
 
           <div class="card-tools">
             
@@ -68,23 +68,23 @@ if(!isset($user_id)){
                       </th>
                       
                       <th>
-                          Nom Client
+                          Nombre del Cliente
                       </th>
                       <th>
-                          Mail
+                          Email
                       </th>
                        <th>
-                          Nº de contact
+                          Nº de contacto
                       </th>
                       <th>
-                          Adresse
+                          Direccion
                       </th>
                        <th>
-                          Adresse de facturation
+                       Direccion de facturacion
                       </th>
                      
                       <th class="text-center">
-                          État
+                          Estado
                       </th>
                       <th>
                       </th>
@@ -144,12 +144,12 @@ if(!isset($user_id)){
                       
                       <td class="project-state">
                         
-                          <?php if($fetch_product['status']=="actif"){
+                          <?php if($fetch_product['status']==1){
                               ?>
-                          <span class="badge badge-success"><?=$fetch_product['status']?></span>
-                          <?php }else if($fetch_product['status']=="inactif"){
+                          <span class="badge badge-success">Activo</span>
+                          <?php }else if($fetch_product['status']==0){
                               ?>
-                          <span class="badge badge-danger"><?=$fetch_product['status']?></span>
+                          <span class="badge badge-danger">Inactivo</span>
                           <?php
                           }?>
                       
@@ -158,14 +158,14 @@ if(!isset($user_id)){
                           <a class="btn btn-primary btn-sm" href="users.php">
                               <i class="fa-solid fa-arrow-rotate-left"></i>
                               </i>
-                              Retour
+                              Volver
                           </a>
                       </td>
                       <td class="project-actions text-right">
                           <a class="btn btn-warning btn-sm" href="orderId_user.php?id=<?php echo $id?>">
                               <i class="fa-solid fa-arrow-rotate-left"></i>
                               </i>
-                              Commandes
+                              Pedidos
                           </a>
                       </td>
                   </tr>
@@ -174,7 +174,7 @@ if(!isset($user_id)){
                 }
                   else {
                     ?>
-                    <h1-6>Pas de client <span class="badge bg-primary">Actuellement</span></h1-6>
+                    <h1-6>No hay clientes <span class="badge bg-primary">Actuellemente</span></h1-6>
                     <?php 
                     }
                      ?>

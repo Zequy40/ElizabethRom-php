@@ -18,7 +18,7 @@ if(isset($_POST['add_product'])){
    $select_products->execute([$name]);
 
    if($select_products->rowCount() > 0){
-      $message[] = 'Cette categorie existe deja!';
+      $message[] = 'Esa categoria ya existe!';
    }else{
 
       $insert_products = $conn->prepare("INSERT INTO `subcategory`(subcategoryName) VALUES(?)");
@@ -57,12 +57,12 @@ if(isset($_POST['add_product'])){
       <div class="container-fluid">
         <div class="row mb-2">
           <div class="col-sm-6">
-            <h1>Ajouter une SubCategorie</h1>
+            <h1>Anadir una Subcategoria</h1>
           </div>
           <div class="col-sm-6">
             <ol class="breadcrumb float-sm-right">
               <li class="breadcrumb-item"><a href="#">Home</a></li>
-              <li class="breadcrumb-item active">Créer SubCategorie</li>
+              <li class="breadcrumb-item active">Anadir SubCategoria</li>
             </ol>
           </div>
         </div>
@@ -83,7 +83,7 @@ if(isset($_POST['add_product'])){
                 <div class="card-body">
                   
                   <div class="form-group">
-                    <label for="exampleSubCat">SubCategorie:</label>
+                    <label for="exampleSubCat">SubCategoria:</label>
                     <input type="text" class="form-control" id="exampleSubCat" placeholder="Nom de la subcategorie" required maxlength="100" name="name">
                   </div>
                   
@@ -93,7 +93,7 @@ if(isset($_POST['add_product'])){
                 <!-- /.card-body -->
 
                 <div class="card-footer">
-                  <button type="submit" class="btn btn-primary" name="add_product">Créer</button>
+                  <button type="submit" class="btn btn-primary" name="add_product">Créar</button>
                 </div>
               </form>
             </div>

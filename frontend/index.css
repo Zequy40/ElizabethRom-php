@@ -1,7 +1,7 @@
 @charset "UTF-8";
 :root {
  --negro: #393939;
---tipo-principal: Helvetica, Arial, sans-serif;
+--tipo-principal: Alice, Arial, sans-serif;
 --tipo-secundaria: Verdana;
 --color-bg: hsl(17, 20%, 97%);
 --color-bg-2: hsl(17, 20%, 94%);
@@ -91,7 +91,7 @@ border-collapse: collapse;
 border-spacing: 0;
 }
 svg {
-width: 100%;
+
 display: block;
 fill: currentColor;
 }
@@ -336,7 +336,7 @@ color:wheat;
 
 .user-account{
     position: fixed;
-    top:0; right:-110%;
+    top:0; right:0;
     width: 100%;
     z-index: 1100;
     background-color: var(--color-bg-3);
@@ -1028,5 +1028,29 @@ font-size: 0.8125rem;
     .blq label {
         font-size: 1.2rem;
     }
+    .display-tag-wish {
+        
+            width: 100%;
+            padding: 20px;
+            display: flex;
+            gap: 16px;
+            flex-wrap: wrap;
+          
+    }
+    .display-tag-wish a{
+        border: 1px solid black;
+        border-radius: 10px;
+        padding: 5px;
+        transition: transform 0.5s ease; 
+}
+.display-tag-wish a:hover{
+    transform: scale(1.1);
+  
+}
+#login-form:hover{
+    cursor: pointer;
+    transform: scale(.9);
+
+}
     }
     

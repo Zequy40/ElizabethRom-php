@@ -1,5 +1,5 @@
 
-<?php include '../backkend/conexion/conexion.php';
+<?php include '_backAdmin/conexion/conexion.php';
 session_start();
 
 session_start();
@@ -47,23 +47,36 @@ header("location:account.php");
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>EliRom Brand.</title>
-    <link rel="stylesheet" href="src/components/header/header.css">
+    <link rel="stylesheet" href="header.css">
     <link rel="stylesheet" href="index.css">
     <link rel="stylesheet" href="account.css">
-    <link rel="stylesheet" href="src/components/footer/footer.css">
-    <script defer src="slider.js"></script>
+    <link rel="stylesheet" href="footer.css">
     
     
 </head>
 <body>
+    
     <main>
-    <?php include 'src/components/header/headerAccount.php' ?>
-    <?php include 'cart2.php' ?> 
+    <div class="mobile">
+            <?php include 'header.php' ?>
+        </div>
+        <div class="tablet">
+           
+            <?php include 'header_tablet.php' ?>
+            
+        </div>
+        <div class="desktop">
+            <?php include 'header_desktop.php' ?>
+         
+        </div>
     <div class="account_container-create">
     <h2 class="account_h2">Crear cuenta</h2>
+    <p class="p">Inserte los datos para poder crear la cuenta.</p>
     <form id="login-form" method="post" action="">
-        <p class="p">Inserte los datos para poder crear la cuenta.</p>
-        <div class="account_form__group field">
+        
+        <div class="login-form-contain">
+            
+            <div class="account_form__group field">
             <input type="text" class="account_form__field" placeholder="Nombre" name="name" required>
             <label for="name" class="account_form__label">Nombre</label>
             
@@ -89,6 +102,8 @@ header("location:account.php");
             <input type="text" class="account_form__field" placeholder="Dirección" name="adress" required>
             <label for="adress" class="account_form__label">Dirección</label>
         </div>
+        </div>
+        <div class="login-form-contain">
         <div class="account_form__group field">
             <input type="text" class="account_form__field" placeholder="Ciudad" name="city" required>
             <label for="city" class="account_form__label">Ciudad</label>
@@ -108,15 +123,72 @@ header("location:account.php");
             <input type="password" class="account_form__field" placeholder="Contraseña" name="pass" required>
             <label for="password" class="account_form__label">Contraseña</label>
         </div>
-        <div class="account_form-group">
+        <div class="account_form-group flexform">
             <button type="submit" name="create_account" >crear cuenta</button>
+        </div>
         </div>
         
     </form>
 </div>
-<?php include 'src/components/footer/footerAccount.php' ?>
+
+<div class="mobile">
+            <?php include 'footer.php' ?>
+            
+    </div>
+ 
+ <div class="desktop">
+            <?php include 'footer_desktop.php' ?>
+         
+        </div>
 <?php include 'menu.php' ?>
 
     </main>
 </body>
+<script>
+    const navTablet = document.querySelector('.menuTablet');
+    const menuButton = document.querySelector('#menuNav');
+    const closeTablet = document.querySelector('#close');
+    const nav = document.querySelector('#menu');
+    
+
+    navTablet.addEventListener('pointerdown', function() {
+        menuButton.classList.add('activation');
+    })
+    closeTablet.addEventListener('pointerdown', () => {
+        menuButton.classList.remove('activation');
+    })
+    
+
+    const icons = document.querySelectorAll(".footer_icon");
+    const active = document.querySelector(".footer_iconMenu")
+
+    // Agrega un evento de clic al botón del menú
+    nav.addEventListener('pointerdown', function() {
+        nav.classList.add('actived')
+        menuButton.classList.toggle('activation');
+
+
+        icons.forEach(icon => {
+            if (icon.classList.contains('linked')) {
+                const correspondingDiv = icon.parentElement;
+                if (nav.classList.contains('actived')) {
+                    if (correspondingDiv.classList.contains('actived')) {
+                        correspondingDiv.classList.remove('actived');
+                        nav.classList.add('actived')
+                        active.classList.add('initial')
+                    } else {
+                        correspondingDiv.classList.add('actived')
+                        nav.classList.remove('actived')
+                        active.classList.remove('initial')
+                    }
+                }
+            };
+        })
+
+
+    })
+
+
+</script>
+
     </html>

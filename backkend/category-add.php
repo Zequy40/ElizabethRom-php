@@ -19,7 +19,7 @@ if(isset($_POST['add_product'])){
    $select_products->execute([$name]);
 
    if($select_products->rowCount() > 0){
-      $message[] = 'Cette categorie existe deja!';
+      $message[] = 'Esa categoria ya existe!';
    }else{
 
       $insert_products = $conn->prepare("INSERT INTO `category`(categoryName, categoryDescription) VALUES(?,?)");
@@ -59,12 +59,12 @@ if(isset($_POST['add_product'])){
       <div class="container-fluid">
         <div class="row mb-2">
           <div class="col-sm-6">
-            <h1>Ajouter une Categorie</h1>
+            <h1>Anadir una Categoria</h1>
           </div>
           <div class="col-sm-6">
             <ol class="breadcrumb float-sm-right">
               <li class="breadcrumb-item"><a href="#">Home</a></li>
-              <li class="breadcrumb-item active">Créer Categorie</li>
+              <li class="breadcrumb-item active">Anadir Categoria</li>
             </ol>
           </div>
         </div>
@@ -98,12 +98,12 @@ if(isset($_POST['add_product'])){
 ?>
                   
                   <div class="form-group">
-                    <label for="exampleCat">Categorie:</label>
-                    <input type="text" class="form-control" id="exampleCat" placeholder="Nom de la categorie" required maxlength="100" name="name">
+                    <label for="exampleCat">Categoria:</label>
+                    <input type="text" class="form-control" id="exampleCat" placeholder="Nombre de la categoria" required maxlength="100" name="name">
                   </div>
                   <div class="form-group">
-                    <label for="exampleDescription">Description:</label>
-                    <textarea name="details" id="exampleDescription" placeholder="Description de la categorie" class="form-control" required maxlength="500" cols="30" rows="10"></textarea>
+                    <label for="exampleDescription">Descripcion:</label>
+                    <textarea name="details" id="exampleDescription" placeholder="Descripcion de la categoria" class="form-control" required maxlength="500" cols="30" rows="10"></textarea>
                   </div>
                   
                   
@@ -111,7 +111,7 @@ if(isset($_POST['add_product'])){
                 <!-- /.card-body -->
 
                 <div class="card-footer">
-                  <button type="submit" class="btn btn-primary" name="add_product">Créer</button>
+                  <button type="submit" class="btn btn-primary" name="add_product">Créar</button>
                 </div>
               </form>
             </div>

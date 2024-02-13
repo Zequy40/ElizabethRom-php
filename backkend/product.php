@@ -78,7 +78,18 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     
 }
 
-$query = "SELECT p.*, c.categoryName AS productCategory, s.subcategoryName AS productSubCategory FROM products p INNER JOIN category c ON p.idCategory = c.id INNER JOIN subcategory s ON p.idSubCategory = s.id ";
+$query = "SELECT p.*, 
+                 c1.categoryName AS productCategory, 
+                 c2.categoryName AS productCategory2,
+                 c3.categoryName AS productCategory3,
+                 c4.categoryName AS productCategory4,
+                 s.subcategoryName AS productSubCategory 
+          FROM products p 
+          INNER JOIN category c1 ON p.idCategory = c1.id AND c1.status = 1
+          LEFT JOIN category c2 ON p.idCategory2 = c2.id
+          LEFT JOIN category c3 ON p.idCategory3 = c3.id
+          LEFT JOIN category c4 ON p.idCategory4 = c4.id
+          INNER JOIN subcategory s ON p.idSubCategory = s.id";
 
 if (!empty($searchTerm)) {
     $query .= " WHERE productName LIKE :searchTerm";
@@ -176,8 +187,11 @@ $select_products->execute();
                           
                       </td>
                       <td>
-                          <?= $fetch_product['productCategory']; ?>
-                      </td>
+    <?= $fetch_product['productCategory']; ?>
+    <?= !empty($fetch_product['productCategory2']) ? ', ' . $fetch_product['productCategory2'] : ''; ?>
+    <?= !empty($fetch_product['productCategory3']) ? ', ' . $fetch_product['productCategory3'] : ''; ?>
+    <?= !empty($fetch_product['productCategory4']) ? ', ' . $fetch_product['productCategory4'] : ''; ?>
+</td>
                       <td class="project_progress">
                           
                           <?= $fetch_product['productSubCategory']; ?>
@@ -232,6 +246,10 @@ $select_products->execute();
                         }
                         ?>
                          
+                      </td>
+
+                      <td class="project-actions text-right">
+                      <a class="btn btn-primary btn-sm" href="product-edit.php?id=<?= $fetch_product['id']?> "> <i class="fas fa-pencil"></i> Editar</a>
                       </td>
                   </tr>
                   <?php

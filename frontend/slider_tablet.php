@@ -1,5 +1,5 @@
 <?php
-include '../backkend/conexion/conexion.php';
+include '_backAdmin/conexion/conexion.php';
 ?>
 <div class="SliderContainer">
   <div class="skeleton-container2">
@@ -12,7 +12,7 @@ $selectSlider->execute();
 if ($selectSlider->rowCount() > 0) {
   while($fetch = $selectSlider->fetch(PDO::FETCH_ASSOC)){
         ?><div class="SliderSlide2" x-data="{ imageIndex: <?php echo $fetch["id"]?> }">
-    <img src="../backkend/img/slider/<?php echo $fetch["img"]?>" alt="Imagen <?php $fetch["id"]?>">
+    <img src="_backAdmin/img/slider/<?php echo $fetch["img"]?>" alt="Imagen <?php $fetch["id"]?>">
   </div>
   <?php
   }

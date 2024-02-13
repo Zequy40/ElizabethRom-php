@@ -1,4 +1,10 @@
-<?php 
+<?php include '_backAdmin/conexion/conexion.php';
+session_start();
+if (isset($_SESSION['user_id'])) {
+    $user_id = $_SESSION['user_id'];
+} else {
+    $user_id = '';
+};
 
 if(isset($_POST['confirm'])){
     $pid = $_POST['pid'];
@@ -16,12 +22,27 @@ if(isset($_POST['delete'])){
 }
             
 ?>
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>EliRom Brand.</title>
+    <link rel="stylesheet" href="header.css">
+    <link rel="stylesheet" href="index.css">
+    <link rel="stylesheet" href="footer.css">
+
+
+</head>
+<body>
+
 <div class="user-account">
 
 	<section>
 		<header class="display-header">
 			<h2 class="display-h2">cesta <?= $user_id?></h2>
-			<div id="close-account"><span><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" stroke-width="1" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+			<div id="close-account" onclick="goBack()"><span><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" stroke-width="1" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
 						<path stroke="none" d="M0 0h24v24H0z" fill="none" />
 						<path d="M18 6l-12 12" />
 						<path d="M6 6l12 12" />
@@ -45,7 +66,7 @@ if(isset($_POST['delete'])){
 			?>
 					<div class="display-tag">
 						<div class="group">
-							<img src="../backkend/img/product/<?= $fetch['product_image'] ?>" alt="">
+							<img src="_backAdmin/img/product/<?= $fetch['product_image'] ?>" alt="">
 							<div class="description">
 								<p class="p_ind"><?= $fetch['product_name'] ?></p>
 								<p class="c_ind"><?= $numero_format ?> €</p>
@@ -60,10 +81,10 @@ if(isset($_POST['delete'])){
 								<form action="" method="post">
 									<input type="hidden" name="productId" value="<?= $fetch['id'] ?>">
 									<div class="blq">
-										<div class="blq"><a href="../shop/edit.php?id=<?= $fetch['id'] ?>"><span><svg xmlns="http://www.w3.org/2000/svg" class="blq_svg" fill="currentColor"  viewBox="0 0 16 16">
+										<div class="blq"><span><svg xmlns="http://www.w3.org/2000/svg" class="blq_svg" fill="currentColor"  viewBox="0 0 16 16">
   <path d="M15.502 1.94a.5.5 0 0 1 0 .706L14.459 3.69l-2-2L13.502.646a.5.5 0 0 1 .707 0l1.293 1.293zm-1.75 2.456-2-2L4.939 9.21a.5.5 0 0 0-.121.196l-.805 2.414a.25.25 0 0 0 .316.316l2.414-.805a.5.5 0 0 0 .196-.12l6.813-6.814z"/>
   <path fill-rule="evenodd" d="M1 13.5A1.5 1.5 0 0 0 2.5 15h11a1.5 1.5 0 0 0 1.5-1.5v-6a.5.5 0 0 0-1 0v6a.5.5 0 0 1-.5.5h-11a.5.5 0 0 1-.5-.5v-11a.5.5 0 0 1 .5-.5H9a.5.5 0 0 0 0-1H2.5A1.5 1.5 0 0 0 1 2.5z"/>
-</svg></span>editar</a>
+</svg></span>editar
 										</div>
 										<div class="blq">
 											<button type="submit" name="delete"><span><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" stroke-width="1" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
@@ -100,9 +121,18 @@ if(isset($_POST['delete'])){
 				<button type="submit" class="display-check" name="confirm">confirmar pedido </button>
 			</form>
 			</div>
-			<a href="shop/shop.php" class="display_a">Seguir comprando →</a>
+			<a href="shop.php" class="display_a">Seguir comprando →</a>
 		</footer>
 
 	</section>
 
 </div>
+
+<script>
+function goBack() {
+  history.back();
+}
+</script>
+</body>
+
+</html>

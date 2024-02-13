@@ -9,7 +9,7 @@
         <div class="footer_p ">Inicio</div>
     </div></a>
     <a href="account.php"><div class="footer_containDiv <?php if ($currentPage == 'account.php') { echo 'actived'; } ?>">
-        <div class="footer_icon <?php if ($currentPage == 'account') { echo 'linked'; } ?>"><svg fill="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" class="footer_svg"><circle cx="12" cy="7" r="4.5" stroke="#fff" fill="transparent"></circle><path d="m2.5145 22.5c0.25881-4.4617 3.959-8 8.4855-8h2c4.5266 0 8.2267 3.5383 8.4855 8h-18.971z" stroke="#fff" fill="transparent"></path></svg></div>
+        <div class="footer_icon <?php if ($currentPage == 'account.php') { echo 'linked'; } ?>"><svg fill="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" class="footer_svg"><circle cx="12" cy="7" r="4.5" stroke="#fff" fill="transparent"></circle><path d="m2.5145 22.5c0.25881-4.4617 3.959-8 8.4855-8h2c4.5266 0 8.2267 3.5383 8.4855 8h-18.971z" stroke="#fff" fill="transparent"></path></svg></div>
         <div class="footer_p">Cuenta</div>
     </div>
     </a>
@@ -19,8 +19,8 @@
           </svg></div>
         <div class="footer_p" >Menu</div>
     </div>
-    <a href="shop.php"><div class="footer_containDiv <?php if ($currentPage == 'shop') { echo 'actived'; } ?>">
-        <div class="footer_icon <?php if ($currentPage == 'shop') { echo 'linked'; } ?>"><svg xmlns="http://www.w3.org/2000/svg" fill="currentColor" class="footer_svg" viewBox="0 0 16 16">
+    <a href="shop.php"><div class="footer_containDiv <?php if ($currentPage == 'shop.php') { echo 'actived'; } ?>">
+        <div class="footer_icon <?php if ($currentPage == 'shop.php') { echo 'linked'; } ?>"><svg xmlns="http://www.w3.org/2000/svg" fill="currentColor" class="footer_svg" viewBox="0 0 16 16">
             <path d="M3 0h10a2 2 0 0 1 2 2v3a2 2 0 0 1-2 2H3a2 2 0 0 1-2-2V2a2 2 0 0 1 2-2m0 1a1 1 0 0 0-1 1v3a1 1 0 0 0 1 1h10a1 1 0 0 0 1-1V2a1 1 0 0 0-1-1zm0 8h10a2 2 0 0 1 2 2v3a2 2 0 0 1-2 2H3a2 2 0 0 1-2-2v-3a2 2 0 0 1 2-2m0 1a1 1 0 0 0-1 1v3a1 1 0 0 0 1 1h10a1 1 0 0 0 1-1v-3a1 1 0 0 0-1-1z"/></div>
         <div class="footer_p">Comprar</div>
     </div></a>

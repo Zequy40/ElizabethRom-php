@@ -18,7 +18,7 @@ if(isset($_POST['update_status'])){
    $update_product = $conn->prepare("UPDATE `orders` SET orderStatus = ? WHERE id = ?");
    $update_product->execute([$name, $pid]);
 
-   $message[] = 'Categorie modifier avec succes!';
+   $message[] = 'Categoria modificada correctamente!';
 }
 
 ?>
@@ -54,7 +54,7 @@ if(isset($_POST['update_status'])){
           <div class="col-sm-6">
             <ol class="breadcrumb float-sm-right">
               <li class="breadcrumb-item"><a href="#">Home</a></li>
-              <li class="breadcrumb-item active">Commande</li>
+              <li class="breadcrumb-item active">Pedidos</li>
             </ol>
           </div>
         </div>
@@ -67,7 +67,7 @@ if(isset($_POST['update_status'])){
       <!-- Default box -->
       <div class="card">
         <div class="card-header">
-          <h3 class="card-title">Produits Commandés</h3>
+          <h3 class="card-title">Pedidos Hechos</h3>
 
          
         </div>
@@ -78,23 +78,23 @@ if(isset($_POST['update_status'])){
                   <tr>
                       
                       <th>
-                          Nom 
+                          Nombre 
                       </th>
                       <th></th>
                       <th>
-                          Produit
+                          Producto
                       </th>
                       <th>
-                          Quantité
+                          Quantidad
                       </th>
                       <th class="text-center">
-                        Prix unitaire
+                        Precio
                       </th>
                       <th>
-                          Moyen de payments
+                          Metodo de pago
                       </th>
                       <th class="text-center">
-                          État
+                          Estado
                       </th>
                       <th>
                       </th>
@@ -130,7 +130,7 @@ if(isset($_POST['update_status'])){
             echo '<td><div class="product-img">
                       <img src="images/'.$order['product_image'].'" alt="Product Image" class="img-size-50">
                     </div></td>';
-            echo '<td><small>Commandé le: ' . $order['orderDate'] . '</small></td>';
+            echo '<td><small>Pedido el: ' . $order['orderDate'] . '</small></td>';
             echo '<td>' . $order['product_name'] . '</td>';
             echo '<td class="project_progress">' . $order['quantity'] . '</td>';
             echo '<td>' . $order['product_price'] . ' €</td>';
@@ -143,25 +143,32 @@ if(isset($_POST['update_status'])){
     echo '<input type="hidden" name="pid" value="'.$order['id'].'">';
     echo '<select class="form-control" name="status">';
     
-    // Aquí puedes generar las opciones para el select según tus estados de pedido
-    echo '<option disabled selected ">'.$order['orderStatus'].'</option>';
-    echo '<option value="Livrer">Livrer</option>';
-    echo '<option value="En Attente">En Attente</option>';
-    echo '<option value="Complet">Complet</option>';
-    echo '<option value="En progres">En progres</option>';
+// Aquí puedes generar las opciones para el select según tus estados de pedido
+echo '<option disabled selected>';
+if ($order['orderStatus'] == 1) {
+    echo "Pagado";
+} elseif ($order['orderStatus'] == 2) {
+    echo "Enviado";
+} elseif ($order['orderStatus'] == 3) {
+    echo "Entregado";
+}
+echo '</option>';
+echo '<option value="1">Pedido</option>';
+echo '<option value="2">Enviado</option>';
+echo '<option value="3">Entregado</option>';
     
-    
-    echo '</select><br>';
+echo '</select><br>';
+
     
     // Agregar un botón para enviar el formulario
-    echo '<button type="submit" class="btn btn-warning" name="update_status">Mettre à jour</button>';
+    echo '<button type="submit" class="btn btn-warning" name="update_status">Actualizar</button>';
     echo '</form>';
 
             echo '</td>';
             echo '<td class="project-actions text-right">';
             
-            echo '<a class="btn btn-info btn-sm" href="product-edit.php?id=' . $order['productId'] . '"><i class="fas fa-pencil-alt"></i> Editer</a>&nbsp;';
-            echo '<a class="btn btn-danger btn-sm" href="#"><i class="fas fa-trash"></i> Effacer</a>';
+            echo '<a class="btn btn-info btn-sm" href="product-edit.php?id=' . $order['productId'] . '"><i class="fas fa-pencil-alt"></i> Editar</a>&nbsp;';
+            echo '<a class="btn btn-danger btn-sm" href="#"><i class="fas fa-trash"></i> Borrar</a>';
             echo '</td>';
             
             
@@ -169,7 +176,7 @@ if(isset($_POST['update_status'])){
         }
     }
 } else {
-    echo '<h1>Pas de produit <span class="badge bg-primary">Actuellement</span></h1>';
+    echo '<h1>No hay producto <span class="badge bg-primary">Actuellemente</span></h1>';
 }?>
                 
               </tbody>
@@ -177,7 +184,7 @@ if(isset($_POST['update_status'])){
         </div>
         
         <!-- /.card-body -->
-      </div><a class="btn btn-primary btn-sm" href="orders.php"><i class="fas fa-reply"></i> Retour</a>&nbsp;
+      </div><a class="btn btn-primary btn-sm" href="orders.php"><i class="fas fa-reply"></i> Volver</a>&nbsp;
       <!-- /.card -->
       
 

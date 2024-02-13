@@ -96,7 +96,8 @@ $select_products->execute();
                       <td>
                         <ul class="list-inline">
                             <li class="list-inline-item">
-                                <img alt="Avatar" class="table-avatar" src="img/product/<?= $fetch_product['img']?>">
+                                <img alt="Avatar" class="img-size-50" src="img/product/<?= $fetch_product['img']?>">
+                                <a class="btn btn-primary btn-sm " href="instagram-edit.php?id=<?= $fetch_product['id']?>" role="button">Editar </a>
                                 
                             </li>
                           

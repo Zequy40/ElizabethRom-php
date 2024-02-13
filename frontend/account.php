@@ -1,4 +1,4 @@
-<?php include '../backkend/conexion/conexion.php';
+<?php include '_backAdmin/conexion/conexion.php';
 session_start();
 if (isset($_SESSION['user_id'])) {
     $user_id = $_SESSION['user_id'];
@@ -23,7 +23,7 @@ if (isset($_POST['submit'])) {
         $_SESSION['user_level'] = $row['level'];
         $_SESSION['user_name'] = $row['name'];
 
-        header('location:index.php');
+        header('location:account.php');
     } else {
         $message[] = 'Username ou Password incorrect!';
     }
@@ -56,6 +56,7 @@ if (isset($_POST['exit'])) {
     <main>
     <div class="mobile">
             <?php include 'header.php' ?>
+             <?php include 'footer.php' ?>
         </div>
         <div class="tablet">
            
@@ -66,13 +67,13 @@ if (isset($_POST['exit'])) {
             <?php include 'header_desktop.php' ?>
          
         </div>
-        <?php include 'cart.php';
+        <?php
 
         if (!isset($user_id) || empty($user_id)) {
             echo '<div class="account_container">';
             echo '<h2 class="account_h2">Acceda a su cuenta</h2>';
-            echo '<form id="login-form" method="post" action="">';
-            echo '<p class="p">Para poder acceder a su cuenta y poder gestionar sus pedidos, lista de deseos y otros, tiene que loguearse o crear una cuenta.</p>';
+            echo '<form id="login-form-sample" method="post" action="">';
+            echo '<p class="p">Para poder acceder a su cuenta y poder gestionar sus pedidos, lista de deseos y otros, tiene que iniciar sessión o crear una cuenta.</p>';
 
             echo '<div class="account_form__group field">';
             echo '<input type="text" class="account_form__field" placeholder="Usuario" name="username" required>';
@@ -102,6 +103,11 @@ if (isset($_POST['exit'])) {
                     <a href="shop-list.php">
                         <div class="account_grid-group">Mis Pedidos</div>
                     </a>
+                    <form id="login-form" method="post" action="">
+                       <button class="account_grid-group" type="submit" name="exit">Cerrar sesión</button>
+                    </form>
+                       
+                    
 
                 </div>
             <?php
@@ -110,13 +116,13 @@ if (isset($_POST['exit'])) {
  <div class="mobile">
             <?php include 'src/components/footer/footerAccount.php' ?>
     </div>
-    <?php include 'menu.php' ?>
+    
     <div class="desktop">
             <?php include 'footer_desktop.php' ?>
          
         </div>
                             
-
+<?php include 'menu.php' ?>
     </main>
 </body>
 <script>
@@ -124,6 +130,7 @@ if (isset($_POST['exit'])) {
     const menuButton = document.querySelector('#menuNav');
     const closeTablet = document.querySelector('#close');
     const nav = document.querySelector('#menu');
+    
 
     navTablet.addEventListener('pointerdown', function() {
         menuButton.classList.add('activation');
@@ -131,6 +138,38 @@ if (isset($_POST['exit'])) {
     closeTablet.addEventListener('pointerdown', () => {
         menuButton.classList.remove('activation');
     })
+    
+
+    const icons = document.querySelectorAll(".footer_icon");
+    const active = document.querySelector(".footer_iconMenu")
+
+    // Agrega un evento de clic al botón del menú
+    nav.addEventListener('pointerdown', function() {
+        nav.classList.add('actived')
+        menuButton.classList.toggle('activation');
+
+
+        icons.forEach(icon => {
+            if (icon.classList.contains('linked')) {
+                const correspondingDiv = icon.parentElement;
+                if (nav.classList.contains('actived')) {
+                    if (correspondingDiv.classList.contains('actived')) {
+                        correspondingDiv.classList.remove('actived');
+                        nav.classList.add('actived')
+                        active.classList.add('initial')
+                    } else {
+                        correspondingDiv.classList.add('actived')
+                        nav.classList.remove('actived')
+                        active.classList.remove('initial')
+                    }
+                }
+            };
+        })
+
+
+    })
+
+
 </script>
 
 </html>

@@ -1,4 +1,4 @@
-<?php include '../backkend/conexion/conexion.php';
+<?php include '_backAdmin/conexion/conexion.php';
 session_start();
 if (isset($_SESSION['user_id'])) {
     $user_id = $_SESSION['user_id'];
@@ -35,16 +35,14 @@ header('Content-Type: text/html; charset=utf-8');
 
 <body>
     <main>
-        <div class="mobile">
+         <div class="mobile">
             <?php include 'header.php' ?>
         </div>
-
-        <div class="mobile">
+         <div class="mobile">
             <?php include 'slider.php' ?>
             <?php include 'sectionClothe.php' ?>
             <?php include 'sectionDestacado.php' ?>
             <?php include 'sectionCart.php' ?>
-            <?php include 'cart.php' ?>
             <?php include 'footer.php' ?>
         </div>
         <div class="tablet">
@@ -53,7 +51,6 @@ header('Content-Type: text/html; charset=utf-8');
             <?php include 'sectionClothe.php' ?>
             <?php include 'sectionDestacado.php' ?>
             <?php include 'sectionCart.php' ?>
-            <?php include 'cart.php' ?>
         </div>
         <div class="desktop">
             <?php include 'header_desktop.php' ?>
@@ -62,7 +59,6 @@ header('Content-Type: text/html; charset=utf-8');
                 <?php include 'sectionClothe.php' ?>
                 <?php include 'sectionDestacado.php' ?>
                 <?php include 'footer_desktop.php' ?>
-                <?php include 'cart.php' ?>
             </div>
         </div>
         <?php include 'menu.php' ?>
@@ -234,19 +230,6 @@ header('Content-Type: text/html; charset=utf-8');
         })
 
 
-    })
-
-    const cart = document.querySelector('#addToCart')
-    const user = document.querySelector('.user-account')
-    const close = document.querySelector('#close-account')
-    cart.addEventListener('click', () => {
-        cart.style.pointerEvents = "none";
-        user.classList.add("active")
-
-    })
-    close.addEventListener('pointerdown', () => {
-        user.classList.remove('active')
-        cart.style.pointerEvents = "auto";
     })
 
 

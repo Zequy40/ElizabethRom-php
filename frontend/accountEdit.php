@@ -1,7 +1,7 @@
-<?php include '../backkend/conexion/conexion.php';
+<?php include '_backAdmin/conexion/conexion.php';
 session_start();
 
-session_start();
+$user_id = $_SESSION['user_id'];
 
 if(isset($_POST['edit_account'])){
 
@@ -27,13 +27,6 @@ if(isset($_POST['edit_account'])){
     
     header('location:personalAccount.php');
     }
-if (isset($_POST['exit'])) {
-    session_start();
-    session_unset();
-    session_destroy();
-
-    header('location:./index.php');
-}
 ?>
 <!DOCTYPE html>
 <html lang="es">
@@ -73,6 +66,7 @@ if (isset($_POST['exit'])) {
          while($fetch_users = $select_users->fetch(PDO::FETCH_ASSOC)){ 
    
 ?>
+<div class="login-form-contain">
             <div class="account_form__group field">
             <input type="text" class="account_form__field" placeholder="Nombre" name="name" value="<?= $fetch_users ["name"]?>" required>
             <label for="name" class="account_form__label">Nombre</label>
@@ -99,6 +93,8 @@ if (isset($_POST['exit'])) {
             <input type="text" class="account_form__field" placeholder="Dirección" name="adress" value="<?= $fetch_users ["shippingAddress"]?>" required>
             <label for="adress" class="account_form__label">Dirección</label>
         </div>
+        </div>
+        <div class="login-form-contain">
         <div class="account_form__group field">
             <input type="text" class="account_form__field" placeholder="Ciudad" name="city" value="<?= $fetch_users ["shippingCity"]?>" required>
             <label for="city" class="account_form__label">Ciudad</label>
@@ -116,6 +112,8 @@ if (isset($_POST['exit'])) {
         <div class="account_form-group">
             <a href="./account.php"><span><svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-arrow-narrow-left" width="16" height="16" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round"><path stroke="none" d="M0 0h24v24H0z" fill="none"/><path d="M5 12l14 0" /><path d="M5 12l4 4" /><path d="M5 12l4 -4" /></svg></span>volver</a>
         </div>
+        </div>
+        
 </form>
             </div>
         

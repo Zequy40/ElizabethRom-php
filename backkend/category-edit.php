@@ -14,12 +14,39 @@ if(isset($_POST['update'])){
    $name = filter_var($name, FILTER_SANITIZE_STRING);
    $details = $_POST['details'];
    $details = filter_var($details, FILTER_SANITIZE_STRING);
+
+   $image_01 = $_FILES['image_01']['name'];
+  $image_01 = filter_var($image_01, FILTER_SANITIZE_STRING);
+  $image_size_01 = $_FILES['image_01']['size'];
+  $image_tmp_name_01 = $_FILES['image_01']['tmp_name'];
+  $image_folder_01 = '../src/assets/'.$image_01;
    
 
-   $update_product = $conn->prepare("UPDATE `category` SET categoryName = ?, categoryDescription = ?, updationDate = NOW() WHERE id = ?");
-   $update_product->execute([$name, $details, $pid]);
+   $update_product = $conn->prepare("UPDATE `category` SET categoryName = ?, categoryDescription = ?,imgBack = ?, updationDate = NOW() WHERE id = ?");
+   $update_product->execute([$name, $details,$image_01, $pid]);
 
-   $message[] = 'Categorie modifier avec succes!';
+   $message[] = 'Categoría modificada!';
+
+   $message[] = 'Imagen actualizar!';
+  
+   $old_image_01 = $_POST['old_image_01'];
+   $image_01 = $_FILES['image_01']['name'];
+   $image_01 = filter_var($image_01, FILTER_SANITIZE_STRING);
+   $image_size_01 = $_FILES['image_01']['size'];
+   $image_tmp_name_01 = $_FILES['image_01']['tmp_name'];
+   $image_folder_01 = '../src/assets/'.$image_01;
+
+   if(!empty($image_01)){
+      if($image_size_01 > 2000000){
+         $message[] = 'imagen demasiada grande!';
+      }else{
+         $update_image_01 = $conn->prepare("UPDATE `category` SET imgBack = ? WHERE id = ?");
+         $update_image_01->execute([$image_01,1]);
+         move_uploaded_file($image_tmp_name_01, $image_folder_01);
+         unlink('../src/assets/'.$old_image_01);
+         $message[] = 'imagen actualizada!';
+      }
+   }
 }
 
 ?>
@@ -51,12 +78,12 @@ if(isset($_POST['update'])){
       <div class="container-fluid">
         <div class="row mb-2">
           <div class="col-sm-6">
-            <h1>Ajouter une Categorie</h1>
+            <h1>Editar Categoría</h1>
           </div>
           <div class="col-sm-6">
             <ol class="breadcrumb float-sm-right">
               <li class="breadcrumb-item"><a href="#">Home</a></li>
-              <li class="breadcrumb-item active">Créer Categorie</li>
+              <li class="breadcrumb-item active">Editar Categoría</li>
             </ol>
           </div>
         </div>
@@ -98,21 +125,26 @@ if(isset($_POST['update'])){
                   
                   <div class="form-group">
                       <input type="hidden" name="pid" value="<?= $fetch_category['id']; ?>">
-                    <label for="exampleCat">Categorie:</label>
+                    <label for="exampleCat">Categoría:</label>
                     <input type="text" class="form-control" id="examplePrix" placeholder="Nom de la categorie" required maxlength="100" name="name" value="<?= $fetch_category['categoryName']; ?>">
                   </div>
                   <div class="form-group">
-                    <label for="exampleDescription">Description:</label>
+                    <label for="exampleDescription">Descripción:</label>
                     <textarea name="details" id="exampleDescription" placeholder="Description de la categorie" class="form-control" required maxlength="500" cols="30" rows="10"><?= $fetch_category['categoryDescription']; ?></textarea>
                   </div>
-                  
+
+                  <div class="form-group">
+                            <img alt="Avatar" class="table-avatar" width="80" src="../src/assets/<?= $fetch_category['imgBack']; ?>">
+                            <label for="inputGroupFile02">Imagen de fondo</label>
+                            <input type="file" class="form-control" id="inputGroupFile02" name="image_01" accept="image/jpg, image/jpeg, image/png, image/webp">
+                  </div>
                   
                 </div>
                 <!-- /.card-body -->
 
                 <div class="card-footer">
                   <input type="submit" name="update" class="btn btn-primary" value="Modifier">
-                   <a href="category.php" class="btn btn-success">Retour</a>
+                   <a href="category.php" class="btn btn-success">Volver</a>
                 </div>
                 <?php
          }

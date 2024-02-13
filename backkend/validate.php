@@ -124,7 +124,7 @@ if(!isset($user_id)){
             echo '<td>' . $order['product_price'] . ' €</td>';
             echo '<td class="text-info"><strong>'.$order['product_price'] * $order['quantity'].'€</strong><td/>';
             echo '<td class="project-state">';
-            echo '<option class="text-success" disabled>Recibidos</option>';
+            echo '<option class="text-success" disabled>Pagado</option>';
             echo '</td>';
             
             echo '</tr>';

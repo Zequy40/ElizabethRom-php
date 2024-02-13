@@ -8,7 +8,7 @@ if (isset($_SESSION['user_id'])) {
 };
 
 
-include '../backkend/conexion/conexion.php';
+include '_backAdmin/conexion/conexion.php';
 if(isset($_POST['confirm'])){
     $pid = $user_id;
     $numeroAleatorio = mt_rand(0, 99999999);

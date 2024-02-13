@@ -2,7 +2,7 @@
     <div class="desktop_global">
     <div class="global">
         <div class="desktop_container">
-            <div class="desktop_logo"><a href="/"><img src="src/assets/logoFinal.svg" alt="LOGO"></a></div>
+            <div class="desktop_logo"><a href="/"><img src="logoFinal.svg" alt="LOGO"></a></div>
             <div class="desktop_title">
                 <p class="desktop_p1">Elizabeth Rom</p>
                 <p class="desktop_p">Brand</p>
@@ -24,15 +24,15 @@
                         while($fetch = $fetch_nav->fetch(PDO::FETCH_ASSOC)){
                     ?>
                         <a href="details.php?id=<?php echo $fetch["src"]?>"><div class="contain_hover">
-                            <img src="../backkend/img/product/<?= $fetch["img"]?>" alt="">
+                            <img src="_backAdmin/img/product/<?= $fetch["img"]?>" alt="">
                             
                         </div></a>
                         <a href="details.php?id=<?php echo $fetch["src2"]?>"><div class="contain_hover">
-                            <img src="../backkend/img/product/<?= $fetch["img2"]?>" alt="">
+                            <img src="_backAdmin/img/product/<?= $fetch["img2"]?>" alt="">
                             
                         </div></a>
                         <a href="details.php?id=<?php echo $fetch["src3"]?>"><div class="contain_hover">
-                            <img src="../backkend/img/product/<?= $fetch["img3"]?>" alt="">
+                            <img src="_backAdmin/img/product/<?= $fetch["img3"]?>" alt="">
                             
                         </div></a>
                         <a href="shop.php"><div class="contain_hover">

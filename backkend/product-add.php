@@ -14,10 +14,14 @@ if(isset($_POST['add_product'])){
    $name = filter_var($name, FILTER_SANITIZE_STRING);
    $categorie = $_POST['exampleCategorie'];
    $categorie = filter_var($categorie, FILTER_SANITIZE_STRING);
+   $categorie2 = $_POST['exampleCategorie2'];
+   $categorie2 = filter_var($categorie2, FILTER_SANITIZE_STRING);
+   $categorie3 = $_POST['exampleCategorie3'];
+   $categorie3 = filter_var($categorie3, FILTER_SANITIZE_STRING);
+   $categorie4 = $_POST['exampleCategorie4'];
+   $categorie4 = filter_var($categorie4, FILTER_SANITIZE_STRING);
    $subCategorie = $_POST['exampleSubCategorie'];
    $subCategorie = filter_var($subCategorie, FILTER_SANITIZE_STRING);
-   $brand = $_POST['exampleBrand'];
-   $brand = filter_var($brand, FILTER_SANITIZE_STRING);
    $price = $_POST['examplePrix'];
    $price = filter_var($price, FILTER_SANITIZE_STRING);
    $priceDiscount = $_POST['examplePriceDiscount'];
@@ -36,59 +40,60 @@ if(isset($_POST['add_product'])){
    $weight2 = filter_var($weight2, FILTER_SANITIZE_STRING);
    $weight3 = $_POST['exampleWeight3'];
    $weight3 = filter_var($weight3, FILTER_SANITIZE_STRING);
-   $stock = $_POST['exampleStock'];
-   $stock = filter_var($stock, FILTER_SANITIZE_STRING);
-   $icon = $_POST['icon'];
-   $icon = filter_var($icon, FILTER_SANITIZE_STRING);
-   $icon2 = $_POST['icon2'];
-   $icon2 = filter_var($icon2, FILTER_SANITIZE_STRING);
-   $icon3 = $_POST['icon3'];
-   $icon3 = filter_var($icon3, FILTER_SANITIZE_STRING);
-   $icon4 = $_POST['icon4'];
-   $icon4 = filter_var($icon4, FILTER_SANITIZE_STRING);
+   $weight4 = $_POST['exampleWeight4'];
+   $weight4 = filter_var($weight4, FILTER_SANITIZE_STRING);
+   $color = $_POST['exampleColor'];
+   $color = filter_var($color, FILTER_SANITIZE_STRING);
+   $color2 = $_POST['exampleColor2'];
+   $color2 = filter_var($color2, FILTER_SANITIZE_STRING);
+   $color3 = $_POST['exampleColor3'];
+   $color3 = filter_var($color3, FILTER_SANITIZE_STRING);
+   $color4 = $_POST['exampleColor4'];
+   $color4 = filter_var($color4, FILTER_SANITIZE_STRING);
+   
    
    $image_01 = $_FILES['image_01']['name'];
    $image_01 = filter_var($image_01, FILTER_SANITIZE_STRING);
    $image_size_01 = $_FILES['image_01']['size'];
    $image_tmp_name_01 = $_FILES['image_01']['tmp_name'];
-   $image_folder_01 = 'images/'.$image_01;
+   $image_folder_01 = 'img/product'.$image_01;
    
    $image_02 = $_FILES['image_02']['name'];
    $image_02 = filter_var($image_02, FILTER_SANITIZE_STRING);
    $image_size_02 = $_FILES['image_02']['size'];
    $image_tmp_name_02 = $_FILES['image_02']['tmp_name'];
-   $image_folder_02 = 'images/'.$image_02;
+   $image_folder_02 = 'img/product'.$image_02;
    
    $image_03 = $_FILES['image_03']['name'];
    $image_03 = filter_var($image_03, FILTER_SANITIZE_STRING);
    $image_size_03 = $_FILES['image_03']['size'];
    $image_tmp_name_03 = $_FILES['image_03']['tmp_name'];
-   $image_folder_03 = 'images/'.$image_03;
+   $image_folder_03 = 'img/product'.$image_03;
    
     $image_04 = $_FILES['image_04']['name'];
    $image_04 = filter_var($image_04, FILTER_SANITIZE_STRING);
    $image_size_04 = $_FILES['image_04']['size'];
    $image_tmp_name_04 = $_FILES['image_04']['tmp_name'];
-   $image_folder_04 = 'images/'.$image_04;
+   $image_folder_04 = 'img/product/'.$image_04;
    
    $select_products = $conn->prepare("SELECT * FROM `products` WHERE productName = ?");
    $select_products->execute([$name]);
 
    if($select_products->rowCount() > 0){
-      $message[] = 'Ce produit existe déja!';
+      $message[] = 'Este producto ya existe!';
    }else{
 
-      $insert_products = $conn->prepare("INSERT INTO `products`(idCategory, idSubCategory, productName , productCompany, productPrice, productPriceDiscount, productDescription, decriptionSmall,title1, title2, weight1, weight2, weight3, productImage1,productImage2,productImage3,imagePromo, icon1, icon2, icon3,icon4,stock) VALUES(?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)");
-      $insert_products->execute([$categorie, $subCategorie,$name,$brand,$price,$priceDiscount,$description,$descriptionMini,$title,$title2,$weight,$weight2,$weight3,$image_01,$image_02,$image_03,$image_04,$icon,$icon2,$icon3,$icon4,$stock]);
+      $insert_products = $conn->prepare("INSERT INTO `products`(idCategory,idCategory2,idCategory3,idCategory4, idSubCategory, productName , productPrice, productPriceDiscount, productDescription, decriptionSmall,title1, title2, weight1, weight2, weight3, weight4, color, color2,color3,color4, productImage1,productImage2,productImage3,imagePromo) VALUES(?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)");
+      $insert_products->execute([$categorie,$categorie2,$categorie3,$categorie4, $subCategorie,$name,$price,$priceDiscount,$description,$descriptionMini,$title,$title2,$weight,$weight2,$weight3,$weight4,$color,$color2,$color3,$color4,$image_01,$image_02,$image_03,$image_04]);
       if($insert_products){
          if($image_size_01 > 2000000 OR $image_size_02 > 2000000 OR $image_size_03 > 2000000 OR $image_size_04 > 2000000){
-            $message[] = 'image trop grande!';
+            $message[] = 'imagen deamasiada grande!';
          }else{
             move_uploaded_file($image_tmp_name_01, $image_folder_01);
             move_uploaded_file($image_tmp_name_02, $image_folder_02);
             move_uploaded_file($image_tmp_name_03, $image_folder_03);
             move_uploaded_file($image_tmp_name_04, $image_folder_04);
-            $message[] = 'Produit déja creer!';
+            $message[] = 'Product ya fue creado!';
          }
 
       }
@@ -129,12 +134,12 @@ if(isset($_POST['add_product'])){
       <div class="container-fluid">
         <div class="row mb-2">
           <div class="col-sm-6">
-            <h1>Ajouter un produit</h1>
+            <h1>Anadir un produto</h1>
           </div>
           <div class="col-sm-6">
             <ol class="breadcrumb float-sm-right">
               <li class="breadcrumb-item"><a href="#">Home</a></li>
-              <li class="breadcrumb-item active">Créer Produit</li>
+              <li class="breadcrumb-item active">Anadir Producto</li>
             </ol>
           </div>
         </div>
@@ -154,29 +159,13 @@ if(isset($_POST['add_product'])){
               <form action="" method="post" enctype="multipart/form-data">
                   
                 <div class="card-body">
-                    <div class="form-group">
-                    <label for="exampleBrand">Fournisseurs:</label>
-                    <select class="form-control" name="exampleBrand" id="exampleBrand">
-                        <?php
-     
-    $select_cat = $conn->prepare("SELECT * FROM `supplier`"); 
-    $select_cat->execute();
-    if($select_cat->rowCount() > 0){
-     while($fetch_product = $select_cat -> fetch(PDO::FETCH_ASSOC)){
-  ?>
-                      
-                      <option value="<?= $fetch_product['id'];?>"><?= $fetch_product['name'];?></option>
-                      <?php }}?>
-                      
-                      
-                    </select>
+                    
+                  <div class="form-group">
+                    <label for="exampleNom">Nombre del producto:</label>
+                    <input type="text" class="form-control" name="name" placeholder="Nombre del producto a crear" required>
                   </div>
                   <div class="form-group">
-                    <label for="exampleNom">Nom du produit:</label>
-                    <input type="text" class="form-control" name="name" placeholder="Nom du produit a ajouter" required>
-                  </div>
-                  <div class="form-group">
-                    <label for="exampleCategorie">Categorie:</label>
+                    <label for="exampleCategorie">Categoria:</label>
                     
                     <select class="form-control" name="exampleCategorie" id="exampleCategorie">
                         <?php
@@ -191,8 +180,59 @@ if(isset($_POST['add_product'])){
                       <?php }}?>
                     </select>
                   </div>
+
                   <div class="form-group">
-                    <label for="exampleSubCategorie">SubCategorie:</label>
+                    <label for="exampleCategorie">Categoria:</label>
+                    
+                    <select class="form-control" name="exampleCategorie2" id="exampleCategorie2">
+                        <?php
+     
+    $select_cat = $conn->prepare("SELECT * FROM `category`"); 
+    $select_cat->execute();
+    if($select_cat->rowCount() > 0){
+     while($fetch_product = $select_cat -> fetch(PDO::FETCH_ASSOC)){
+  ?>
+                      
+                      <option value="<?= $fetch_product['id'];?>"><?= $fetch_product['categoryName'];?></option>
+                      <?php }}?>
+                    </select>
+                  </div>
+
+                  <div class="form-group">
+                    <label for="exampleCategorie">Categoria:</label>
+                    
+                    <select class="form-control" name="exampleCategorie3" id="exampleCategorie3">
+                        <?php
+     
+    $select_cat = $conn->prepare("SELECT * FROM `category`"); 
+    $select_cat->execute();
+    if($select_cat->rowCount() > 0){
+     while($fetch_product = $select_cat -> fetch(PDO::FETCH_ASSOC)){
+  ?>
+                      
+                      <option value="<?= $fetch_product['id'];?>"><?= $fetch_product['categoryName'];?></option>
+                      <?php }}?>
+                    </select>
+                  </div>
+
+                  <div class="form-group">
+                    <label for="exampleCategorie">Categoria:</label>
+                    
+                    <select class="form-control" name="exampleCategorie4" id="exampleCategorie4">
+                        <?php
+     
+    $select_cat = $conn->prepare("SELECT * FROM `category`"); 
+    $select_cat->execute();
+    if($select_cat->rowCount() > 0){
+     while($fetch_product = $select_cat -> fetch(PDO::FETCH_ASSOC)){
+  ?>
+                      
+                      <option value="<?= $fetch_product['id'];?>"><?= $fetch_product['categoryName'];?></option>
+                      <?php }}?>
+                    </select>
+                  </div>
+                  <div class="form-group">
+                    <label for="exampleSubCategorie">SubCategoria:</label>
                     <select class="form-control" name="exampleSubCategorie" id="exampleSubCategorie">
                         <?php
      
@@ -208,130 +248,99 @@ if(isset($_POST['add_product'])){
                       
                     </select>
                   </div>
+
+                  
                   
                   <div class="form-group">
-                    <label for="examplePrice">Prix:</label>
-                    <input type="number" step="0.01" class="form-control" name="examplePrix" placeholder="Prix" required>
+                    <label for="examplePrice">Precio:</label>
+                    <input type="number" step="0.01" class="form-control" name="examplePrix" placeholder="Precio" required>
                   </div>
                   <div class="form-group">
-                    <label for="examplePriceDiscount">Prix Soldé:</label>
-                    <input type="number" step="0.01" class="form-control" name="examplePriceDiscount" placeholder="Prix Soldé">
+                    <label for="examplePriceDiscount">Precio rebajado:</label>
+                    <input type="number" step="0.01" class="form-control" name="examplePriceDiscount" placeholder="Rebaja">
                   </div>
                   <div class="form-group">
-                    <label for="exampleDescription">Description:</label>
-                    <textarea class="form-control" rows="3" placeholder="Description du produit..." name="exampleDescription" id="exampleDescription"></textarea>
+                    <label for="exampleDescription">Descripcion:</label>
+                    <textarea class="form-control" rows="3" placeholder="Descripcion del producto..." name="exampleDescription" id="exampleDescription"></textarea>
                   </div>
                   <div class="form-group">
-                    <label for="exampleDescriptionMini">Mini Description:</label>
-                    <textarea class="form-control" rows="3" placeholder="Bref description du produit..." name="exampleDescriptionMini" id="exampleDescriptionMini"></textarea>
+                    <label for="exampleDescriptionMini">Mini Descripcion:</label>
+                    <textarea class="form-control" rows="3" placeholder="Breve Descripcion del producto..." name="exampleDescriptionMini" id="exampleDescriptionMini"></textarea>
                   </div>
                   <div class="form-group">
-                    <label for="titleDecription">Titre Description:</label>
-                    <textarea class="form-control" rows="3" placeholder="Titre de la description du produit..." name="titleDecription" id="titleDecription"></textarea>
+                    <label for="titleDecription">Titulo Descripcion:</label>
+                    <textarea class="form-control" rows="3" placeholder="Titulo de la Descripcion del producto..." name="titleDecription" id="titleDecription"></textarea>
                   </div>
                   <div class="form-group">
-                    <label for="title2Decription">Titre 2 Description:</label>
-                    <textarea class="form-control" rows="3" placeholder="Titre 2 de la description du produit..." name="title2Decription" id="title2Decription"></textarea>
+                    <label for="title2Decription">Titulo 2 Descripcion:</label>
+                    <textarea class="form-control" rows="3" placeholder="Titulo 2 de la Descripcion del producto..." name="title2Decription" id="title2Decription"></textarea>
                   </div>
                   <div class="form-group">
-                    <label for="exampleWeight">poid:</label>
-                    <input type="number" class="form-control" name="exampleWeight" placeholder="Poids du produit">
-                  </div>
-                  
-                  <div class="form-group">
-                    <label for="exampleWeight2">poid 2:</label>
-                    <input type="number" class="form-control" id="exampleWeight2" name="exampleWeight2" placeholder="Poids 2 du produit ">
+                    <label for="exampleWeight">talla:</label>
+                    <input type="text" class="form-control" name="exampleWeight" placeholder="Talla del producto">
                   </div>
                   
                   <div class="form-group">
-                    <label for="exampleWeight3">poid 3:</label>
-                    <input type="number" class="form-control" id="exampleWeight3" name="exampleWeight3" placeholder="Poids 3 du produit ">
+                    <label for="exampleWeight2">talla 2:</label>
+                    <input type="text" class="form-control" id="exampleWeight2" name="exampleWeight2" placeholder="talla 2 del producto ">
                   </div>
                   
                   <div class="form-group">
-                            <label for="inputGroupFile02">Charger 1º image</label>
+                    <label for="exampleWeight3">talla 3:</label>
+                    <input type="text" class="form-control" id="exampleWeight3" name="exampleWeight3" placeholder="talla 3 del producto ">
+                  </div>
+
+                  <div class="form-group">
+                    <label for="exampleWeight4">talla 4:</label>
+                    <input type="text" class="form-control" id="exampleWeight4" name="exampleWeight4" placeholder="talla 4 del producto ">
+                  </div>
+                  <div class="form-group">
+                    <label for="exampleColor">color:</label>
+                    <input type="text" class="form-control" name="exampleColor" placeholder="Color del producto">
+                  </div>
+                  
+                  <div class="form-group">
+                    <label for="exampleColor2">color 2:</label>
+                    <input type="text" class="form-control" id="exampleColor2" name="exampleColor2" placeholder="color 2 del producto ">
+                  </div>
+                  
+                  <div class="form-group">
+                    <label for="exampleColor3">color 3:</label>
+                    <input type="text" class="form-control" id="exampleColor3" name="exampleColor3" placeholder="color 3 del producto ">
+                  </div>
+
+                  <div class="form-group">
+                    <label for="exampleColor4">color 4:</label>
+                    <input type="text" class="form-control" id="exampleColor4" name="exampleColor4" placeholder="color 4 del producto ">
+                  </div>
+                  
+                  <div class="form-group">
+                            <label for="inputGroupFile02">Cargar 1º imagen</label>
                             <input type="file" class="form-control" id="inputGroupFile02" name="image_01" accept="image/jpg, image/jpeg, image/png, image/webp">
                   </div>
                   
                  <div class="form-group">
-                            <label for="inputGroupFile03">Charger 2º image</label>
+                            <label for="inputGroupFile03">cargar 2º imagen</label>
                             <input type="file" class="form-control" id="inputGroupFile03" name="image_02" accept="image/jpg, image/jpeg, image/png, image/webp">
                   </div>
                   
                   <div class="form-group">
-                            <label for="inputGroupFile04">Charger 3º image</label>
+                            <label for="inputGroupFile04">cargar 3º imagen</label>
                             <input type="file" class="form-control" id="inputGroupFile04" name="image_03" accept="image/jpg, image/jpeg, image/png, image/webp">
                   </div>
                   
                   <div class="form-group">
-                            <label for="inputGroupFile05">Charger 4º image promotionelle</label>
+                            <label for="inputGroupFile05">cargar 4º imagen</label>
                             <input type="file" class="form-control" id="inputGroupFile05" name="image_04" accept="image/jpg, image/jpeg, image/png, image/webp">
                   </div>
                   
-                  <div class="form-group">
-                    <label for="exampleCategorie">Icon 1:</label>
-                    
-                    <select class="form-control" name="icon" id="icon">
-                        
-                      <option value="1" selected>Liquide</option>
-                      <option value="2">Sport</option>
-                      <option value="3">Aerobique</option>
-                      <option value="4">Recup</option>
-                      
-                    </select>
-                  
-                  </div>
-                  
-                  <div class="form-group">
-                    <label for="exampleCategorie">Icon 2:</label>
-                    
-                    <select class="form-control" name="icon2" id="icon2">
-                        
-                      <option value="1" >Liquide</option>
-                      <option value="2"selected>Sport</option>
-                      <option value="3">Aerobique</option>
-                      <option value="4">Recup</option>
-                      
-                    </select>
-                  </div>
-                  
-                  <div class="form-group">
-                    <label for="exampleCategorie">Icon 3:</label>
-                    
-                    <select class="form-control" name="icon3" id="icon3">
-                        
-                      <option value="1" >Liquide</option>
-                      <option value="2">Sport</option>
-                      <option value="3"selected>Aerobique</option>
-                      <option value="4">Recup</option>
-                      
-                    </select>
-                  </div>
-                  
-                  <div class="form-group">
-                    <label for="exampleCategorie">Icon 4:</label>
-                    
-                    <select class="form-control" name="icon4" id="icon4">
-                        
-                      <option value="1" >Liquide</option>
-                      <option value="2">Sport</option>
-                      <option value="3">Aerobique</option>
-                      <option value="4"selected>Recup</option>
-                      
-                    </select>
-                  </div>
-                  
-                  <div class="form-group">
-                    <label for="exampleStock">Stock:</label>
-                    <input type="number" class="form-control" name="exampleStock" placeholder="Stock">
-                  </div>
                   
                   
                 </div>
                 <!-- /.card-body -->
 
                 <div class="card-footer">
-                  <button type="submit" class="btn btn-primary" name="add_product">Créer</button>
+                  <button type="submit" class="btn btn-primary" name="add_product">Créar</button>
                 </div>
               </form>
             </div>
