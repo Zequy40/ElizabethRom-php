@@ -1,20 +1,21 @@
 <?php include '_backAdmin/conexion/conexion.php';
 session_start();
+
 if (isset($_SESSION['user_id'])) {
     $user_id = $_SESSION['user_id'];
 } else {
     $user_id = '';
 };
 
-if(isset($_POST['confirm'])){
-    $pid = $_POST['pid'];
-     // Actualiza el estado del pedido
-            $update_product = $conn->prepare("UPDATE orders SET orderStatus = ?, send = ? WHERE userId = ? AND orderStatus = 0");
-            $update_product->execute([1, 1, $pid]);
-            header("location:mail.php");
-			exit;
+// if(isset($_POST['confirm'])){
+//     $pid = $_POST['pid'];
+//      //Actualiza el estado del pedido
+//             $update_product = $conn->prepare("UPDATE orders SET orderStatus = ?, send = ? WHERE userId = ? AND orderStatus = 0");
+//             $update_product->execute([1, 1, $pid]);
+//             header("location:checkout.php");
+// 			exit;
 			
-}
+// }
 
 if(isset($_POST['delete'])){
     $productId = $_POST['productId'];
@@ -72,6 +73,8 @@ header('Content-Type: text/html; charset=utf-8');
                     $numero_format = number_format($numero, 2, ',', '.');
 					$total = $numero * $fetch['quantity'];
 					$totalsum += $total;
+					$totalprice = $totalsum * 100;
+
 					$totalsumFormat = number_format($totalsum, 2, ',','.');
 					
 			?>
@@ -139,8 +142,9 @@ header('Content-Type: text/html; charset=utf-8');
                             <?php echo (isset($totalsumFormat) && $totalsumFormat != "undefined") ? $totalsumFormat . " €" : "";?>
                         </div>
                     </div>
-                    <form action="" method="post">
+                    <form action="checkout.php" method="post">
                         <input type="hidden" name="pid" value="<?= $user_id?>">
+                        <input type="hidden" name="price" value="<?= $totalprice?>">
 
                         <button type="submit" class="display-check" name="confirm">confirmar pedido </button>
                     </form>

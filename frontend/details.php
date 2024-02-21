@@ -10,6 +10,7 @@ if (isset($_SESSION['user_id'])) {
 if (isset($_POST['add_product'])) {
   $id_product = $_GET['id'];
   $orderStatus = 0;
+  $transaction = 0;
 
   $weight = filter_var($_POST['weight'], FILTER_SANITIZE_FULL_SPECIAL_CHARS);
   $color = filter_var($_POST['color'], FILTER_SANITIZE_FULL_SPECIAL_CHARS);

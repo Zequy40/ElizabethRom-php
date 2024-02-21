@@ -5,7 +5,7 @@ session_start();
 
     $user_id = $_SESSION['user_id'];
 
-$fetch_cart = $conn->prepare("SELECT p.*,  s.productName AS product_name, s.productPrice AS product_price, s.productImage1 AS product_image FROM orders p INNER JOIN products s ON p.productId = s.id WHERE orderStatus = 1 AND send = 0 AND userId =".$user_id);
+$fetch_cart = $conn->prepare("SELECT p.*,  s.productName AS product_name, s.productPrice AS product_price, s.productImage1 AS product_image FROM orders p INNER JOIN products s ON p.productId = s.id WHERE orderStatus = 0 AND userId =".$user_id);
 			$fetch_cart->execute();
 			if ($fetch_cart->rowCount() > 0) {
 				while ($fetch = $fetch_cart->fetch(PDO::FETCH_ASSOC)) {
@@ -56,6 +56,6 @@ $fetch_cart = $conn->prepare("SELECT p.*,  s.productName AS product_name, s.prod
                     echo 'Error al enviar el correo de confirmación';
                 }
                 
-                header(sprintf("Location:index.php"));
+                header(sprintf("Location:checkin.php"));
                 ?>
   
