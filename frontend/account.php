@@ -84,6 +84,8 @@ if (isset($_POST['exit'])) {
             echo '<input type="password" class="account_form__field" placeholder="Contraseña" name="pass" required>';
             echo '<label for="password" class="account_form__label">Contraseña</label> ';
             echo '</div>';
+            echo '<input class="account_form__field" type="checkbox" id="check" name="politicy" required>';
+            echo '<label class="account_form__label" for="check">He leído y acepto la <a href="politicy.html">Política de Privacidad</a> y el <a href="uso.html">Aviso Legal</a></label>';
 
             echo '<div class="account_form-group">';
             echo '<button type="submit" name="submit">Login</button>';

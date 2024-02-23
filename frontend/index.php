@@ -1,5 +1,6 @@
 <?php include '_backAdmin/conexion/conexion.php';
 session_start();
+ini_set('display_errors', '1');
 if (isset($_SESSION['user_id'])) {
     $user_id = $_SESSION['user_id'];
 } else {
@@ -29,11 +30,24 @@ header('Content-Type: text/html; charset=utf-8');
     <link rel="stylesheet" href="sectionDestacado.css">
     <link rel="stylesheet" href="sectionCart.css">
     <link rel="stylesheet" href="footer.css">
-
+    <script src="https://cdn.tailwindcss.com"></script>
+    
 
 </head>
 
 <body>
+    <!-- Cookie Consent by TermsFeed https://www.TermsFeed.com -->
+<script type="text/javascript" src="https://www.termsfeed.com/public/cookie-consent/4.1.0/cookie-consent.js" charset="UTF-8"></script>
+<script type="text/javascript" charset="UTF-8">
+document.addEventListener('DOMContentLoaded', function () {
+cookieconsent.run({"notice_banner_type":"simple","consent_type":"express","palette":"dark","language":"es","page_load_consent_levels":["strictly-necessary"],"notice_banner_reject_button_hide":false,"preferences_center_close_button_hide":false,"page_refresh_confirmation_buttons":false,"website_name":"https://elizabethrom.com","website_privacy_policy_url":"https://elizabethrom.com/cookies.html"});
+});
+</script>
+
+<noscript>Free cookie consent management tool by <a href="https://www.termsfeed.com/">TermsFeed</a></noscript>
+<!-- End Cookie Consent by TermsFeed https://www.TermsFeed.com -->
+
+
     <main>
          <div class="mobile">
             <?php include 'header.php' ?>

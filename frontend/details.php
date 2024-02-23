@@ -50,6 +50,7 @@ if (isset($_POST['add_product'])) {
   <link rel="stylesheet" href="index.css">
   <link rel="stylesheet" href="shop.css">
   <link rel="stylesheet" href="footer.css">
+  <script src="https://cdn.tailwindcss.com"></script>
 
 
 </head>
@@ -112,8 +113,13 @@ if (isset($_POST['add_product'])) {
 
     ?>
         <div class="details_container">
-
+          <div class="flex-col">
           <img src="_backAdmin/img/product/<?= $fetch["productImage1"] ?>" alt="" class="details_img">
+          <div class='flex max-w-40 px-[10px]'>
+            <img src="_backAdmin/img/product/<?= $fetch["productImage2"] ?>" alt="">
+            <img src="_backAdmin/img/product/<?= $fetch["productImage3"] ?>" alt="">
+          </div>
+          </div>
           <div class="details_contain">
             <div class="details_whislist">
               <h2 class="details_h2"><?= $fetch["productName"] ?></h2>
@@ -129,20 +135,16 @@ if (isset($_POST['add_product'])) {
             </div>
             <p class="details_price"><?php echo number_format($fetch['productPrice'], 2, ',', ' '); ?> EUR</p>
 
-            <div class="details_label">Colores:<label id="selectedColorLabel"></label></div>
-            <div class="details_input">
-
-              <input type="radio" name="color" id="negro" class="details_negro" value="<?= $fetch["color"] ?>" <?= ($product && $product['color'] === "Purpura") ? "checked" : "" ?> checked />
-              <label for="negro"></label>
-
-              <input type="radio" name="color" id="rojo" class="details_rojo" value="<?= $fetch["color2"] ?>" <?= ($product && $product['color'] === "Purpura") ? "checked" : "" ?> />
-              <label for="rojo"></label>
-
-              <input type="radio" name="color" id="purpura" class="details_purpura" value="<?= $fetch["color3"] ?>" <?= ($product && $product['color'] === "Purpura") ? "checked" : "" ?> />
-              <label for="purpura" class="Purpura"></label>
-
-
-            </div>
+            <div class="details_label">Colores:<label id="selectedColor" for="color"></label></div>
+            <select name="color" id="selectedColorLabel">
+              <?php if($fetch["color"]=="" && $fetch["color2"]=="" && $fetch["color3"]=="" && $fetch["color4"]==""){?>
+              <option>Color Unico</option>
+              <?php } ?>
+              <option value="<?= $fetch["color"] ?>"><?= $fetch["color"] ?></option>
+              <option value="<?= $fetch["color2"] ?>"><?= $fetch["color2"] ?></option>
+              <option value="<?= $fetch["color3"] ?>"><?= $fetch["color3"] ?></option>
+              <option value="<?= $fetch["color4"] ?>"><?= $fetch["color4"] ?></option>
+            </select>
             <div class="details_containCheck">
 
               <input type="radio" class="details_check" name="weight" id="size" value=<?= $fetch["weight1"] ?> checked />

@@ -50,7 +50,7 @@ header('Content-Type: text/html; charset=utf-8');
     
 <section class="contact_principal">
   
-    <img class="image-contact" src="contact.jpeg"/>
+    
     <div class="divider">
 		<div class="contact_notification">
             <div class="contact_notiglow"></div>

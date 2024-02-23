@@ -5,7 +5,7 @@ if(isset($_POST['confirm'])){
 }
 require __DIR__ .'/vendor/autoload.php';
 
-$stripeSecretKey = "sk_test_51OlaAbKyLnc6f8hesuluAPaLnGqZS3gzGdey81WzBQlu8xKw0ByDPIQyB4d2IJgQ3TJN8gxld0UdzOq31Jr3btRq00R1jjG0AJ";
+$stripeSecretKey = "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";
 
 \Stripe\Stripe::setApiKey($stripeSecretKey);
 header('Content-Type: application/json');
@@ -23,8 +23,8 @@ $checkout_session = \Stripe\Checkout\Session::create([
       'currency' => 'eur',
       'unit_amount' => $price,
       'product_data' => [
-        'name' => 'Cardigan',
-        'description' => 'Cárdigan oversize de punto',
+        'name' => 'Ropa de Elizabeth Rom',
+        'description' => 'Ropa Mujer ',
                 
       ]
     ]

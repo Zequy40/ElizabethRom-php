@@ -1,28 +1,9 @@
 
-<section class="layout">
-  <div class="col">
-    <div class="card">
-        <img src="price.webp" alt="">
-    </div>
-</div>
-  <div class="inter">
-    <div class="card">
-        <img class="card-logo" src="_backAdmin/img/product/logoFinal_blanco.svg" alt="">
-    </div>
-</div>
-  <div class="central">
-   
-        <img class="card-img" src="_backAdmin/img/product/IMG_3872.webp" alt="">
-    
-</div>
-  <div class="medium">
-  <img class="card-img" src="_backAdmin/img/product/portada.webp" alt="">
-</div>
-  <div class="base">
-    <div class="card">
-        <p class="card-p">
-            Tan solo 49,00€
-        </p>
-    </div>
-</div>
+<section class="absolute top-0 left-0">
+<video
+    class="object-center object-cover h-full w-full"
+    autoplay
+    muted
+    loop
+    src="/portada_video.webm"></video>
 </section>

@@ -6,16 +6,17 @@
             <img src="_backAdmin/img/product/logoFinal.svg" alt="">
         </div>
         <div class="terms">
-            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Voluptas impedit cum cumque velit libero officiis quam doloremque reprehenderit quae corporis! Delectus architecto officia praesentium atque laudantium, nam deleniti sapiente deserunt.</p>
+            <p>Tienda de ropa Elizabeth Rom.</p>
         </div>
     </div>
     
     <div class="box__footer">
         <h2>Compañia</h2>
-        <a href="#">Comprar</a>
-        <a href="#">Favoritos</a>
-        <a href="#">Cuenta</a>
-        <a href="#">Contacto</a>              
+        <a href="return.html">Devoluciones</a> 
+        <a href="politicy.html">Aviso Legal</a>
+        <a href="uso.html">Condiciones de uso</a>
+        <a href="cookies.html">Cookies</a>
+                     
     </div>
     
     <div class="box__footer">

@@ -17,7 +17,7 @@
     </div>
     <ul>
         <?php
-        $fetch_category = $conn->prepare("SELECT categoryName, src,id  FROM `category` WHERE activedMenu=1");
+        $fetch_category = $conn->prepare("SELECT categoryName, src,id  FROM `category` WHERE status = 1");
         $fetch_category->execute();
         if ($fetch_category->rowCount() > 0) {
             while ($fetch = $fetch_category->fetch(PDO::FETCH_ASSOC)) {
@@ -63,6 +63,18 @@
                         d="M11 1a1 1 0 0 1 1 1v12a1 1 0 0 1-1 1H5a1 1 0 0 1-1-1V2a1 1 0 0 1 1-1zM5 0a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h6a2 2 0 0 0 2-2V2a2 2 0 0 0-2-2z" />
                     <path d="M8 14a1 1 0 1 0 0-2 1 1 0 0 0 0 2" />
                 </svg>Contacto</li>
+        </a>
+        <a href="return.html" class="menu_contact">
+            <li> Politica de devolución</li>
+        </a>
+        <a href="cookies.html" class="menu_contact">
+            <li> Politica de cookies</li>
+        </a>
+        <a href="politicy.html" class="menu_contact">
+            <li> Politica de privacidad</li>
+        </a>
+        <a href="uso.html" class="menu_contact">
+            <li> Politica de uso</li>
         </a>
         <li>
             <div class="general_menu">

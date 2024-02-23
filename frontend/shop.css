@@ -361,6 +361,15 @@ gap: 10px;
   
   #selectedColorLabel, .label{
     font-size: 14px;
+    
+  }
+  #selectedColorLabel{
+    font-size: 14px;
+    appearance: auto;
+    border: 1px solid black;
+    padding: 0.5rem;
+    max-width: 150px;
+    border-radius: 5px;
   }
   .details_svg{
     width: 16px;
