@@ -116,8 +116,8 @@ if (isset($_POST['add_product'])) {
           <div class="flex-col">
           <img src="_backAdmin/img/product/<?= $fetch["productImage1"] ?>" alt="" class="details_img">
           <div class='flex max-w-40 px-[10px]'>
-            <img src="_backAdmin/img/product/<?= $fetch["productImage2"] ?>" alt="">
-            <img src="_backAdmin/img/product/<?= $fetch["productImage3"] ?>" alt="">
+            <img class="px-2" src="_backAdmin/img/product/<?= $fetch["productImage2"] ?>" alt="">
+            <img class="px-2" src="_backAdmin/img/product/<?= $fetch["productImage3"] ?>" alt="">
           </div>
           </div>
           <div class="details_contain">
