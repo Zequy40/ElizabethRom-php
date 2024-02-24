@@ -5,7 +5,7 @@ if(isset($_POST['confirm'])){
 }
 require __DIR__ .'/vendor/autoload.php';
 
-$stripeSecretKey = "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";
+$stripeSecretKey = "";
 
 \Stripe\Stripe::setApiKey($stripeSecretKey);
 header('Content-Type: application/json');
