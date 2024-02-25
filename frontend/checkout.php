@@ -5,7 +5,7 @@ if(isset($_POST['confirm'])){
 }
 require __DIR__ .'/vendor/autoload.php';
 
-$stripeSecretKey = "";
+
 
 \Stripe\Stripe::setApiKey($stripeSecretKey);
 header('Content-Type: application/json');
